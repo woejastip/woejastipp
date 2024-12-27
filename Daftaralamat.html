@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Alamat</title>
+    <style>
+        /* Mengatur tampilan body */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6; /* Latar belakang abu-abu muda */
+            color: #333; /* Warna teks lebih gelap */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Form Input */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 450px;
+            margin: 40px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut pada form */
+        }
+
+        .form-container input, .form-container select {
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 2px solid #8f5bbd;
+            width: 100%;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        .form-container input:focus, .form-container select:focus {
+            outline: none;
+            border-color: #6f3fa0; /* Warna fokus lebih gelap */
+        }
+
+        /* Memastikan tampilan dropdown seperti input teks */
+        .form-container select {
+            -webkit-appearance: none; /* Menghapus tampilan default dropdown di beberapa browser */
+            -moz-appearance: none;
+            appearance: none;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="none" d="M12 5l-4 4-4-4"%3E%3C/path%3E%3C/svg%3E') no-repeat right 10px center;
+            background-size: 16px;
+        }
+
+        .form-container button {
+            background-color: #8f5bbd;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #6f3fa0;
+        }
+
+        /* Teks judul form */
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #000000;
+        }
+
+        .navbar img.logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Link Kembali */
+        .back-link {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #8f5bbd;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 12px;
+            margin-top: auto;
+        }
+
+        /* Responsif untuk perangkat kecil */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .navbar img.logo {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar dengan logo SJ di pojok kiri -->
+    <div class="navbar">
+        <img src="woe.png" alt="Logo SJ" class="logo" />
+    </div>
+
+    <!-- Formulir untuk Input Nama dan Nomor Telepon -->
+    <div class="form-container">
+        <h2>Masukkan Nama dan Nomor Telepon Untuk Mendapatkan Alamat!</h2>
+        <form id="formAlamat" onsubmit="return saveData()">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" required>
+
+            <label for="telepon">Nomor Telepon</label>
+            <input type="tel" id="telepon" required>
+
+            <!-- Menambahkan pilihan kota dengan tampilan dropdown seperti input teks -->
+            <label for="kota">Pilih Kota</label>
+            <select id="kota" required>
+                <option value="ternate">Kota Ternate</option>
+                <option value="bacan_kota">Bacan Kota</option>
+                <option value="obi_laiwui">Obi Laiwui</option>
+                <option value="obi_kawasi">Obi Kawasi</option>
+            </select>
+
+            <button type="submit">Simpan dan Lihat Alamat</button>
+
+            <!-- Tautan Kembali -->
+            <a href="index.html" class="back-link">Kembali</a>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 woe.jastip By. Dhani Mochtar
+    </footer>
+
+    <script>
+        // Fungsi untuk menyimpan data ke localStorage
+        function saveData() {
+            var nama = document.getElementById("nama").value;
+            var telepon = document.getElementById("telepon").value;
+            var kota = document.getElementById("kota").value;
+
+            // Simpan nama, telepon, dan kota ke localStorage
+            localStorage.setItem("nama", nama);
+            localStorage.setItem("wa", telepon);
+            localStorage.setItem("kota", kota);
+
+            // Arahkan ke halaman informasi alamat setelah data disimpan
+            window.location.href = "Prosesalamat.html";
+
+            return false; // Mencegah pengiriman form
+        }
+    </script>
+</body>
+
+</html>

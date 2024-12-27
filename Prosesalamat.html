@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Alamat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            background-image: url('background-image.jpg'); /* Ganti dengan path gambar latar belakang */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            padding: 15px 0;  /* Mengurangi padding */
+            text-align: center;
+            font-size: 16px;  /* Mengurangi ukuran font */
+        }
+
+        /* Navbar untuk logo di tengah */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;  /* Mengatur logo di tengah */
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            z-index: 1000;
+        }
+
+        .navbar img.logo {
+            width: 150px; /* Ukuran logo lebih besar */
+            height: auto; /* Menjaga rasio gambar */
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Desain instruksi */
+        .instruction {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 5px; /* Geser 3 cm ke bawah */
+        }
+
+        .phone-screen {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: -15.6px; /* Geser 2 cm ke atas */
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background: #f9f9f9;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #333;
+            position: relative;
+        }
+
+        .info-box p {
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        /* Mengubah warna teks untuk bagian penting */
+        .info-box p strong {
+            font-weight: 600;
+            color: #8f5bbd;  /* Mengubah warna teks menjadi #f6647e */
+        }
+
+        .change-address-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .change-address-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Link Kembali */
+        .back-link {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            margin-top: -10px; /* Mengurangi margin untuk geser ke atas */
+            color: #8f5bbd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 8px 0;  /* Mengurangi padding */
+            font-size: 12px;  /* Mengurangi ukuran font */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .phone-screen {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .info-box {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .change-address-btn {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .navbar {
+                font-size: 12px;
+            }
+
+            .instruction {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="woe.png" alt="Logo Sagu Jastip" class="logo">
+    </div>
+
+    <div class="instruction">
+        Silakan copypaste untuk mengedit alamat teman-teman. Ikuti sesuai keterangan di bawah ini agar tidak terjadi kesalahan. Bisa digunakan untuk alamat di Shopee, Tokopedia, TikTok, dan platform lainnya!
+    </div>
+
+    <div class="phone-screen">
+        <div class="info-box">
+            <p><strong>Nama Lengkap </strong><br><span id="displayKontak">Loading...</span></p>
+            <p><strong>Nomor Telepon </strong><br>082258401126</p>
+               <p><strong>Provinsi, Kota, Kecamatan, Kode Pos:</strong><br>DKI JAKARTA<br>KOTA JAKARTA TIMUR<br>KRAMAT JATI<br>13640</p>
+            <p><strong>Nama Jalan, Gedung, No. Rumah </strong><br>Kontrakan oren, Gg. Alisarbi Cililitan 13640 RT.08 RW.09 No. 11A (woe.jastip) ( <span id="displayNama">Nama</span> <span id="displayWA">Nomor WA</span>) <span id="displayKota">Loading...</span></p>
+        </div>
+    </div>
+
+    <!-- Tautan Kembali -->
+    <a href="Daftaralamat.html" class="back-link">Kembali</a>
+
+    <script>
+        // Mendapatkan data dari localStorage atau default jika data tidak ditemukan
+        var nama = localStorage.getItem("nama") || "Data tidak ditemukan";
+        var wa = localStorage.getItem("wa") || "Data tidak ditemukan";
+        var kota = localStorage.getItem("kota") || "Data kota tidak ditemukan"; // Ambil data kota
+
+        // Menampilkan data pada elemen yang sesuai
+        document.getElementById("displayKontak").textContent = "" + nama + " " + wa + " " + kota; // Menambahkan kota
+        document.getElementById("displayNama").textContent = nama;
+        document.getElementById("displayWA").textContent = wa;
+        document.getElementById("displayKota").textContent = kota; // Menambahkan kota ke bagian Nama Jalan, Gedung, No. Rumah
+    </script>
+
+    <footer>
+        &copy; 2024 woe.jastip By. Dhani Mochtar
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>woe.jastip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* Mengubah latar belakang halaman menjadi putih */
+            color: #000; /* Mengubah warna teks menjadi hitam agar kontras dengan latar belakang putih */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Agar tinggi halaman minimal memenuhi layar */
+        }
+
+        /* Header Section */
+        header {
+            background-color: #000; /* Latar belakang hitam untuk header */
+            text-align: center; /* Menempatkan logo dan menu di tengah */
+            padding: 20px 0; /* Padding atas dan bawah */
+        }
+
+        /* Logo */
+        .logo {
+            width: 150px; /* Ukuran logo */
+            height: auto; /* Menjaga rasio gambar */
+            display: block;
+            margin: 0 auto; /* Memastikan logo berada di tengah */
+        }
+
+        /* Navbar bawah logo */
+        .navbar {
+            margin-top: 10px; /* Memberikan sedikit jarak dari logo */
+        }
+
+        .navbar a {
+            color: #fff; /* Mengubah warna teks navbar menjadi putih */
+            margin: 0 20px; /* Memberikan jarak antar link */
+            text-decoration: none;
+            font-size: 14px; /* Ukuran font lebih kecil */
+        }
+
+        .navbar a:hover {
+            text-decoration: underline; /* Mengubah teks menjadi bergaris bawah saat hover */
+        }
+
+        /* Content Section */
+        .content {
+            text-align: center;
+            padding: 20px;
+            flex: 1; /* Menggunakan flex untuk membuat konten mengisi ruang yang tersedia */
+        }
+
+        .content h1 {
+            font-size: 30px; /* Ukuran font lebih besar untuk h1 */
+            color: #000; /* Mengubah warna teks h1 menjadi hitam */
+            margin-bottom: 0; /* Mengurangi jarak bawah pada h1 */
+        }
+
+        .content h1 span {
+            color: #8f5bbd; /* Mengubah warna sebagian teks h1 menjadi warna ungu */
+        }
+
+        .tagline {
+            color: #000; /* Mengubah warna teks tagline menjadi hitam */
+            padding: 5px 10px;
+            display: inline-block;
+            margin-top: -5px; /* Mengurangi margin atas pada tagline untuk mendempetkan dengan h1 */
+            margin-bottom: 10px; /* Masih memberikan sedikit jarak bawah untuk pemisahan */
+            font-size: 14px; /* Ukuran font lebih kecil untuk tagline */
+        }
+
+        /* Image Container */
+        .image-container {
+            position: relative;
+            width: 100%; /* Menjamin lebar container mengikuti ukuran layar */
+            overflow-x: scroll; /* Menambahkan scroll horizontal */
+            display: flex; /* Flexbox untuk menampilkan gambar berurutan */
+            scroll-snap-type: x mandatory; /* Memaksa scroll berhenti pada setiap gambar */
+            -webkit-overflow-scrolling: touch; /* Memberikan scroll yang halus di perangkat mobile */
+        }
+
+        .image-container img {
+            width: 100vw; /* Setiap gambar mengambil 100% lebar layar */
+            height: auto; /* Menjaga rasio gambar agar tidak terdistorsi */
+            object-fit: cover; /* Memastikan gambar menutupi area tanpa terdistorsi */
+            scroll-snap-align: start; /* Memastikan setiap gambar berhenti pada awal ketika digeser */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000; /* Mengubah latar belakang footer menjadi hitam */
+            color: #fff; /* Teks footer menjadi putih */
+            text-align: center;
+            padding: 10px 0;
+            font-size: 12px; /* Ukuran font lebih kecil untuk footer */
+            margin-top: auto; /* Agar footer berada di bawah konten */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <!-- Logo -->
+        <img src="woe.png" alt="Logo Nusa Ina" class="logo">
+        
+        <!-- Navbar (Menu Links) -->
+        <div class="navbar">
+            <a href="https://wa.me/6282258401126" target="_blank">Chat Admin</a>
+            <a href="Daftaralamat.html">Alamat Jastip</a>
+            <a href="cekpaket.html">Cek Paket</a>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Selamat datang di <span>woe.jastip</span>!</h1>
+        <div class="tagline">"Titipan Aman, No Drama! #woejastip"</div>
+
+        <!-- Image Container with Horizontal Scroll -->
+        <div class="image-container">
+            <!-- Gambar pertama -->
+            <img src="woe1.jpg" alt="Kota Ternate">
+            <!-- Gambar kedua -->
+            <img src="woe2.jpg" alt="Bacan">
+            <!-- Gambar ketiga -->
+            <img src="woe3.jpg" alt="Obi">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 woe.jastip By. Dhani Mochtar
+    </footer>
+
+</body>
+</html>
