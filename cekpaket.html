@@ -8,39 +8,37 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #ffffff; /* Latar belakang putih */
+            background-color: #ffffff;
             color: black;
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
 
-        /* Header styling */
         header {
-            background-color: #000000; /* Latar belakang hitam untuk header */
-            padding: 10px 20px; /* Padding yang lebih kecil */
+            background-color: #000000;
+            padding: 10px 20px;
             color: white;
-            font-size: 18px; /* Ukuran font lebih kecil */
-            font-weight: bold; /* Membuat tulisan bold */
+            font-size: 18px;
+            font-weight: bold;
             position: relative;
             text-align: center;
             display: flex;
-            justify-content: center; /* Memastikan logo berada di tengah secara horizontal */
-            align-items: center; /* Memastikan logo berada di tengah secara vertikal */
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Logo styling */
         header .logo {
-            width: 150px; /* Ukuran logo lebih kecil */
-            height: auto; /* Menjaga proporsi logo */
+            width: 150px;
+            height: auto;
         }
 
         footer {
-            background-color: #000000; /* Latar belakang hitam untuk footer */
+            background-color: #000000;
             text-align: center;
             padding: 10px;
             color: white;
-            font-size: 12px; /* Ukuran font lebih kecil di footer */
+            font-size: 12px;
         }
 
         .container {
@@ -49,26 +47,26 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            overflow-x: auto; /* Menambahkan scroll horizontal pada container */
+            overflow-x: auto;
         }
 
         .container p {
-            font-size: 16px; /* Ukuran font untuk "Data di bawah ..." lebih kecil */
+            font-size: 16px;
             margin-bottom: 20px;
         }
 
         table {
             width: 100%;
-            max-width: 100%; /* Menjaga lebar tabel sesuai dengan lebar layar */
+            max-width: 100%;
             border-collapse: collapse;
             border: 1px solid #8f5bbd;
         }
 
         th, td {
-            padding: 8px 12px; /* Padding lebih kecil */
+            padding: 8px 12px;
             text-align: center;
             border: 1px solid #8f5bbd;
-            font-size: 12px; /* Ukuran font lebih kecil */
+            font-size: 12px;
             color: black;
         }
 
@@ -78,43 +76,41 @@
         }
 
         tr:nth-child(even) {
-            background-color: #d1b9e6; /* Latar belakang putih untuk baris genap */
+            background-color: #d1b9e6;
         }
 
         tr:nth-child(odd) {
-            background-color: #ffffff; /* Latar belakang pink muda untuk baris ganjil */
+            background-color: #ffffff;
         }
 
         tr:hover {
-            background-color: #8f5bbd; /* Latar belakang pink lebih terang saat hover */
+            background-color: #8f5bbd;
         }
 
-        /* Link kembali */
         .back-link {
-            margin-top: 20px; /* Spasi atas */
+            margin-top: 20px;
             text-decoration: none;
-            color: #8f5bbd; /* Warna pink untuk link */
+            color: #8f5bbd;
             font-size: 14px;
             font-weight: bold;
         }
 
-        /* Media query untuk tampilan mobile */
         @media (max-width: 600px) {
             header {
-                font-size: 16px; /* Ukuran font header lebih kecil pada perangkat mobile */
+                font-size: 16px;
             }
 
             table {
                 width: 100%;
-                font-size: 10px; /* Ukuran font lebih kecil pada perangkat mobile */
+                font-size: 10px;
             }
 
             th, td {
-                padding: 4px 6px; /* Padding lebih kecil untuk mobile */
+                padding: 4px 6px;
             }
 
             .container p {
-                font-size: 14px; /* Ukuran font lebih kecil pada perangkat mobile */
+                font-size: 14px;
             }
 
             .container {
@@ -125,7 +121,6 @@
 </head>
 <body>
     <header>
-        <!-- Ganti logo menjadi nusalaut.png -->
         <img src="woe.png" alt="Logo Nusalaut" class="logo">
     </header>
 
@@ -139,10 +134,9 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Akhiran No WA</th>
-                    <th>Kota</th> <!-- Kolom Kota -->
-                    <th>Akhiran No Resi</th> <!-- Kolom No Resi -->
-                    <th>Berat (kg)</th>
-                    <th>Volume (m³)</th>
+                    <th>Kota</th>
+                    <th>Akhiran No Resi</th>
+                    <th>Berat dan Volume</th> <!-- Kolom gabungan -->
                 </tr>
             </thead>
             <tbody>
@@ -151,110 +145,99 @@
                     <td>1</td>
                     <td>Hesti Hi. Umar</td>
                     <td>5053</td>
-                    <td>Obi Laiwui</td> <!-- Kota -->
+                    <td>Obi Laiwui</td>
                     <td>4567</td>
-                    <td>0,7</td>
-                    <td>0.03</td>
+                    <td>0,7 kg / 0.03 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>15-Nov-2024</td>
                     <td>2</td>
                     <td>Naufal Kangela</td>
                     <td>6244</td>
-                    <td>Bacan Kota</td> <!-- Kota -->
+                    <td>Bacan Kota</td>
                     <td>0985</td>
-                    <td>0.2</td>
-                    <td>0.04</td>
+                    <td>0,2 kg / 0.04 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>15-Nov-2024</td>
                     <td>3</td>
                     <td>Aprilia Winalda</td>
                     <td>1294</td>
-                    <td>Ternate</td> <!-- Kota -->
+                    <td>Ternate</td>
                     <td>0165</td>
-                    <td>0.5</td>
-                    <td>0.04</td>
+                    <td>0,5 kg / 0.04 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>17-Nov-2024</td>
                     <td>4</td>
                     <td>Gamiarsi Juma</td>
                     <td>5514</td>
-                    <td>Obi Laiwui</td> <!-- Kota -->
+                    <td>Obi Laiwui</td>
                     <td>0985</td>
-                    <td>0.8</td>
-                    <td>0.04</td>
+                    <td>0,8 kg / 0.04 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>17-Nov-2024</td>
                     <td>5</td>
                     <td>Anisa Rajangawa</td>
                     <td>5514</td>
-                    <td>Obi Laiwui</td> <!-- Kota -->
+                    <td>Obi Laiwui</td>
                     <td>0911</td>
-                    <td>0.3</td>
-                    <td>0.0</td>
+                    <td>0,3 kg / 0.0 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>6</td>
                     <td>Nurul Kurniawati</td>
                     <td>7890</td>
-                    <td>Ternate</td> <!-- Kota -->
+                    <td>Ternate</td>
                     <td>1234</td>
-                    <td>0.2</td>
-                    <td>0.0</td>
+                    <td>0,2 kg / 0.0 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>7</td>
                     <td>Rafdin Kangela</td>
                     <td>3215</td>
-                    <td>Obi Laiwui</td> <!-- Kota -->
+                    <td>Obi Laiwui</td>
                     <td>5678</td>
-                    <td>0.6</td>
-                    <td>0.03</td>
+                    <td>0,6 kg / 0.03 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>8</td>
                     <td>Sari Ismail</td>
                     <td>9075</td>
-                    <td>Ternate</td> <!-- Kota -->
+                    <td>Ternate</td>
                     <td>1357</td>
-                    <td>0.4</td>
-                    <td>0.0</td>
+                    <td>0,4 kg / 0.0 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>9</td>
                     <td>Aprilia Winalda</td>
                     <td>1294</td>
-                    <td>Ternate</td> <!-- Kota -->
+                    <td>Ternate</td>
                     <td>4680</td>
-                    <td>0.2</td>
-                    <td>0.04</td>
+                    <td>0,2 kg / 0.04 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>10</td>
                     <td>Aprilia Winalda</td>
                     <td>1294</td>
-                    <td>Ternate</td> <!-- Kota -->
+                    <td>Ternate</td>
                     <td>2345</td>
-                    <td>0.6</td>
-                    <td>0.03</td>
+                    <td>0,6 kg / 0.03 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
                 <tr>
                     <td>18-Nov-2024</td>
                     <td>11</td>
                     <td>Hesti Hi. Umar</td>
                     <td>5253</td>
-                    <td>Obi Laiwui</td> <!-- Kota -->
+                    <td>Obi Laiwui</td>
                     <td>6789</td>
-                    <td>0.8</td>
-                    <td>0.04</td>
+                    <td>0,8 kg / 0.04 m³</td> <!-- Gabungan Berat dan Volume -->
                 </tr>
             </tbody>
         </table>
