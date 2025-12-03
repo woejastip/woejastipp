@@ -53,39 +53,23 @@
         .container p {
             font-size: 16px;
             margin-bottom: 20px;
-            text-align: center; /* Ensures text is centered */
-        }
-
-        table {
-            width: 100%;
-            max-width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #8f5bbd;
-        }
-
-        th, td {
-            padding: 8px 12px;
             text-align: center;
-            border: 1px solid #8f5bbd;
-            font-size: 12px;
-            color: black;
         }
 
-        th {
+        .btn-sheet {
+            display: inline-block;
             background-color: #8f5bbd;
             color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
         }
 
-        tr:nth-child(even) {
-            background-color: #d1b9e6;
-        }
-
-        tr:nth-child(odd) {
-            background-color: #ffffff;
-        }
-
-        tr:hover {
-            background-color: #8f5bbd;
+        .btn-sheet:hover {
+            background-color: #7347a0;
         }
 
         .back-link {
@@ -99,15 +83,6 @@
         @media (max-width: 600px) {
             header {
                 font-size: 16px;
-            }
-
-            table {
-                width: 100%;
-                font-size: 10px;
-            }
-
-            th, td {
-                padding: 4px 6px;
             }
 
             .container p {
@@ -126,138 +101,9 @@
     </header>
 
     <div class="container">
-        <p>Data di bawah adalah paket yang telah tiba di lokasi jastip. Setiap paket yg sudah sampai di alamat woejastip Kami akan update di web ini</p>
+        <p>Untuk melihat data paket terbaru silakan klik tombol di bawah untuk membuka Google Sheets:</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Akhiran No WA</th>
-                    <th>Kota</th>
-                    <th>Jumlah Paket</th>
-                    <th>Berat dan Volume</th> <!-- Kolom gabungan -->
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>1</td>
-                    <td>Rosma</td>
-                    <td>5204</td>
-                    <td>Ternate</td>
-                    <td>10</td>
-                    <td>7,445 kg / 8,297 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>2</td>
-                    <td>Gita</td>
-                    <td>1287</td>
-                    <td>Ternate</td>
-                    <td>11</td>
-                    <td>6,820 kg / 9,429 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>3</td>
-                    <td>Puput</td>
-                    <td>7456</td>
-                    <td>Bacan</td>
-                    <td>2</td>
-                    <td>0,750 kg / 0,769 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>4</td>
-                    <td>Gami</td>
-                    <td>3780</td>
-                    <td>Laiwui</td>
-                    <td>5</td>
-                    <td>1,465 kg / 1,308 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>5</td>
-                    <td>Esa</td>
-                    <td>4742</td>
-                    <td>Ternate</td>
-                    <td>2</td>
-                    <td>9,6 kg / 15,5 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                 <tr>
-                    <td>10-Mar-2025</td>
-                    <td>6</td>
-                    <td>Anti</td>
-                    <td>4742</td>
-                    <td>Ternate</td>
-                    <td>2</td>
-                    <td>18,1 kg / 27,5 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                 <tr>
-                    <td>10-Mar-2025</td>
-                    <td>7</td>
-                    <td>Nur hidayati</td>
-                    <td>7505</td>
-                    <td>Ternate</td>
-                    <td>2</td>
-                    <td>17,455 kg / 23,8 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                 <tr>
-                    <td>10-Mar-2025</td>
-                    <td>8</td>
-                    <td>Diah</td>
-                    <td>6411</td>
-                    <td>Ternate</td>
-                    <td>2</td>
-                    <td>1,940 kg / 6,9 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>9</td>
-                    <td>zucraina</td>
-                    <td>0427</td>
-                    <td>Tidore</td>
-                    <td>2</td>
-                    <td>0,370 kg / 0,433 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>10</td>
-                    <td>sridewi</td>
-                    <td>7882</td>
-                    <td>Ternate</td>
-                    <td>1</td>
-                    <td>0,580 kg / 0,520 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>11</td>
-                    <td>Dewi</td>
-                    <td>4886</td>
-                    <td>Sofifi</td>
-                    <td>1</td>
-                    <td>1,140 kg / 0,340 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                <tr>
-                    <td>10-Mar-2025</td>
-                    <td>12</td>
-                    <td>Sintani</td>
-                    <td>5774</td>
-                    <td>Ternate</td>
-                    <td>3</td>
-                    <td>3,595 kg / 3,146 m³</td> <!-- Gabungan Berat dan Volume -->
-                </tr>
-                
-                
-                
-                
-                
-                
-                
-            </tbody>
-        </table>
+        <a href="LINK_GOOGLE_SHEETS_KAMU" target="_blank" class="btn-sheet">Buka Google Sheets</a>
 
         <a href="javascript:history.back()" class="back-link">Kembali ke halaman sebelumnya</a>
     </div>
@@ -267,3 +113,4 @@
     </footer>
 </body>
 </html>
+
