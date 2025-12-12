@@ -6,9 +6,8 @@
     <title>woe.jastip</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
             background-color: #fff;
             color: #000;
             display: flex;
@@ -16,35 +15,46 @@
             min-height: 100vh;
         }
 
-        /* Header Section */
+        /* Header */
         header {
             background-color: #000;
-            text-align: center;
-            padding: 20px 0;
+            padding: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         /* Logo */
         .logo {
-            width: 150px;
+            width: 140px;
             height: auto;
             display: block;
-            margin: 0 auto;
+            margin: 0 auto 8px auto;
         }
 
         /* Navbar */
         .navbar {
-            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 5px;
         }
 
         .navbar a {
             color: #fff;
-            margin: 0 20px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.3s;
         }
 
         .navbar a:hover {
-            text-decoration: underline;
+            background-color: #444;
+            transform: scale(1.05);
         }
 
         /* Content */
@@ -55,9 +65,8 @@
         }
 
         .content h1 {
-            font-size: 30px;
-            color: #000;
-            margin-bottom: 0;
+            font-size: 32px;
+            font-weight: bold;
         }
 
         .content h1 span {
@@ -65,29 +74,30 @@
         }
 
         .tagline {
-            color: #000;
-            padding: 5px 10px;
-            display: inline-block;
-            margin-top: -5px;
-            margin-bottom: 10px;
-            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #333;
         }
 
-        /* Image Slider */
+        /* Image slider */
         .image-container {
-            position: relative;
             width: 100%;
-            overflow-x: scroll;
             display: flex;
+            overflow-x: auto;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .image-container::-webkit-scrollbar {
+            display: none;
         }
 
         .image-container img {
             width: 100vw;
             height: auto;
-            object-fit: cover;
             scroll-snap-align: start;
+            object-fit: cover;
         }
 
         /* Footer */
@@ -95,46 +105,73 @@
             background-color: #000;
             color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 12px 0;
             font-size: 12px;
-            margin-top: auto;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .navbar a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+
+            .logo {
+                width: 120px;
+            }
+
+            .content h1 {
+                font-size: 26px;
+            }
+
+            .tagline {
+                font-size: 13px;
+            }
+        }
+
+        /* DESKTOP */
+        @media (min-width: 720px) {
+            .navbar a {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 160px;
+            }
+
+            .content h1 {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
-        <img src="woe.png" alt="Logo woejastip" class="logo">
+        <img src="woe.png" class="logo">
 
-        <!-- Navbar -->
         <div class="navbar">
             <a href="https://wa.me/6282258401126" target="_blank">Chat Admin</a>
             <a href="Daftaralamat.html">Alamat Jastip</a>
             <a href="cekpaket.html">Cek Paket</a>
-
-            <!-- 🔐 Tombol admin baru -->
             <a href="admin-login.html">Admin</a>
         </div>
     </header>
 
-    <!-- Content -->
     <div class="content">
         <h1>Selamat datang di <span>woe.jastip</span>!</h1>
         <div class="tagline">"Titipan Aman, No Drama! #woejastip"</div>
 
         <div class="image-container">
-            <img src="woe1.jpg" alt="Kota Ternate">
-            <img src="woe2.jpg" alt="Bacan">
-            <img src="woe3.jpg" alt="Obi">
+            <img src="woe1.jpg">
+            <img src="woe2.jpg">
+            <img src="woe3.jpg">
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         © 2024 woe.jastip By. Dhani Mochtar
     </footer>
 
 </body>
 </html>
-
