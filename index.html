@@ -87,6 +87,7 @@ header {
     border-radius: 16px;
     background: #f9f9f9;
     border: 1px solid #ddd;
+    text-align: center;
 }
 
 .calculator h2 {
@@ -97,33 +98,42 @@ header {
 .calculator p {
     font-size: 12px;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .calculator input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    font-size: 13px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 .calculator button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 999px;
     background: linear-gradient(135deg,#9b5cff,#6f2cff);
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .result {
     margin-top: 12px;
     font-size: 14px;
     font-weight: bold;
+    min-height: 28px; /* tinggi tetap */
+    line-height: 28px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 6px 10px;
+    box-sizing: border-box;
 }
 
 /* ================= FOOTER FIXED ================= */
@@ -267,7 +277,7 @@ footer {
         <input type="number" id="t" placeholder="Tinggi (cm)">
 
         <button onclick="hitung()">Hitung</button>
-        <div class="result" id="hasil"></div>
+        <div class="result" id="hasil">Berat Volume akan muncul di sini</div>
     </div>
 </div>
 
@@ -302,7 +312,6 @@ footer {
             Pastikan paket masuk sebelum tanggal closing.
         </div>
 
-        <!-- CHAT ADMIN DIPERTAHANKAN -->
         <a href="https://wa.me/6282258401126" class="woe-btn">
             Chat Admin
         </a>
@@ -322,7 +331,7 @@ function hitung() {
     if (p && l && t) {
         let volume = (p * l * t) / 4000;
         document.getElementById("hasil").innerHTML =
-            "Berat Volume: " + volume.toFixed(2) + " Kg";
+            volume.toFixed(2) + " Kg";
     } else {
         document.getElementById("hasil").innerHTML =
             "Lengkapi semua kolom!";
@@ -332,4 +341,5 @@ function hitung() {
 
 </body>
 </html>
+
 
