@@ -1,196 +1,145 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>woe.jastip</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>woe.jastip</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff;
+}
 
-        /* Header */
-        header {
-            background-color: #000;
-            text-align: center;
-            padding: 20px 0;
-        }
+/* Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
 
-        .logo {
-            width: 150px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+/* Popup Box */
+.popup-box {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 14px;
+    padding: 25px 20px 30px;
+    text-align: center;
+    position: relative;
+}
 
-        .navbar {
-            margin-top: 10px;
-        }
+/* Close Button */
+.popup-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
 
-        .navbar a {
-            color: #fff;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 14px;
-        }
+/* Title */
+.popup-box h1 {
+    font-size: 28px;
+    color: #ff3b3b;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
 
-        .navbar a:hover {
-            text-decoration: underline;
-        }
+/* Schedule Item */
+.schedule {
+    margin-bottom: 18px;
+}
 
-        /* Content */
-        .content {
-            text-align: center;
-            padding: 20px;
-            flex: 1;
-        }
+.schedule .date {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
 
-        .content h1 {
-            font-size: 30px;
-            margin-bottom: 0;
-        }
+.schedule .type {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e6bd6;
+}
 
-        .content h1 span {
-            color: #8f5bbd;
-        }
+.schedule small {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-top: 4px;
+}
 
-        .tagline {
-            font-size: 14px;
-            margin: 5px 0 20px;
-        }
+/* Highlight Closing */
+.closing {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    font-size: 14px;
+}
 
-        /* Banner Closing */
-        .closing-banner {
-            max-width: 900px;
-            margin: 0 auto 30px;
-            padding: 25px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #000, #2b2b2b);
-            color: #fff;
-        }
+.closing span {
+    color: #ff3b3b;
+    font-weight: bold;
+}
 
-        .closing-banner h2 {
-            font-size: 26px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .closing-banner .date {
-            font-size: 22px;
-            font-weight: bold;
-            color: #d8b4ff;
-            margin-bottom: 15px;
-        }
-
-        .closing-banner p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            color: #d8b4ff;
-            font-weight: bold;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #8f5bbd;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 14px;
-        }
-
-        .cta-btn:hover {
-            background: #7a48a3;
-        }
-
-        /* Image Scroll */
-        .image-container {
-            width: 100%;
-            overflow-x: scroll;
-            display: flex;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .image-container img {
-            width: 100vw;
-            height: auto;
-            object-fit: cover;
-            scroll-snap-align: start;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 12px;
-        }
-    </style>
+/* Button */
+.popup-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 25px;
+    background: #000;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.popup-btn:hover {
+    background: #333;
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="woe.png" alt="Logo woe.jastip" class="logo">
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        <div class="popup-close" onclick="closePopup()">×</div>
 
-        <div class="navbar">
-            <a href="https://wa.me/6282258401126" target="_blank">Chat Admin</a>
-            <a href="Daftaralamat.html">Alamat Jastip</a>
-            <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit?usp=sharing" target="_blank">
-                Cek Paket
-            </a>
-        </div>
-    </header>
+        <h1>JADWAL TRIP</h1>
 
-    <!-- Content -->
-    <div class="content">
-        <h1>Selamat datang di <span>woe.jastip</span>!</h1>
-        <div class="tagline">"Titipan Aman, No Drama! #woejastip"</div>
-
-        <!-- Banner Closing -->
-        <div class="closing-banner">
-            <h2>🚨 CLOSING PENGIRIMAN</h2>
+        <div class="schedule">
             <div class="date">03 Januari 2025</div>
-
-            <p>
-                Pengiriman <span class="highlight">Jakarta ➜ Maluku Utara</span><br>
-                akan <span class="highlight">DITUTUP SEMENTARA</span>.<br><br>
-                Pastikan paket sudah sampai di alamat jastip<br>
-                <span class="highlight">sebelum 03 Januari 2025</span>.
-            </p>
-
-            <a href="https://wa.me/6282258401126" target="_blank" class="cta-btn">
-                💬 Konfirmasi ke Admin
-            </a>
+            <div class="type">CLOSING PENGIRIMAN</div>
+            <small>Jakarta ➜ Maluku Utara</small>
         </div>
 
-        <!-- Image Scroll -->
-        <div class="image-container">
-            <img src="woe1.jpg" alt="Kota Ternate">
-            <img src="woe2.jpg" alt="Bacan">
-            <img src="woe3.jpg" alt="Obi">
+        <div class="closing">
+            Pastikan paket sudah sampai di alamat jastip<br>
+            <span>SEBELUM 03 JANUARI 2025</span>
         </div>
+
+        <a href="https://wa.me/6282258401126" target="_blank" class="popup-btn">
+            Chat Admin
+        </a>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        © 2024 woe.jastip By. Dhani Mochtar
-    </footer>
+<script>
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
