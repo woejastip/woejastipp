@@ -12,14 +12,18 @@ body {
     padding: 0;
     background-color: #fff;
     color: #000;
-    min-height: 100vh;
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER (FIXED) ================= */
 header {
     background-color: #000;
     text-align: center;
     padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .logo {
@@ -46,7 +50,11 @@ header {
 /* ================= CONTENT ================= */
 .content {
     text-align: center;
-    padding: 30px 20px;
+    padding: 150px 20px 80px; 
+    /* 
+       150px = jarak dari header fixed
+       80px  = jarak dari footer fixed
+    */
 }
 
 .content h1 {
@@ -75,13 +83,18 @@ header {
     scroll-snap-align: start;
 }
 
-/* ================= FOOTER ================= */
+/* ================= FOOTER (FIXED) ================= */
 footer {
     background: #000;
     color: #fff;
     text-align: center;
     padding: 12px;
     font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /* ================= POPUP ================= */
@@ -198,15 +211,15 @@ footer {
     <div class="tagline">Titipan Aman, No Drama</div>
 
     <div class="image-container">
-        <img src="woe1.jpg">
-        <img src="woe2.jpg">
-        <img src="woe3.jpg">
+        <img src="woe1.jpg" alt="">
+        <img src="woe2.jpg" alt="">
+        <img src="woe3.jpg" alt="">
     </div>
 </div>
 
 <!-- ================= FOOTER ================= -->
 <footer>
-    © 2025 woe.jastip
+    © 2025 Dhani Mochtar
 </footer>
 
 <!-- ================= POPUP ================= -->
@@ -248,3 +261,4 @@ function closePopup() {
 
 </body>
 </html>
+
