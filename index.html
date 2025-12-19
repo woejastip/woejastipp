@@ -1,217 +1,171 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>woe.jastip</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jadwal Trip Januari | woejastip</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        /* ===== HEADER ===== */
-        header {
-            background-color: #000;
-            text-align: center;
-            padding: 20px 0;
-        }
+/* OVERLAY */
+.woe-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
 
-        .logo {
-            width: 150px;
-            margin: 0 auto;
-            display: block;
-        }
+/* MODAL */
+.woe-modal {
+    background: linear-gradient(180deg, #111, #1a1a1a);
+    width: 90%;
+    max-width: 420px;
+    border-radius: 20px;
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+    animation: fadeUp .4s ease;
+    color: #fff;
+}
 
-        .navbar {
-            margin-top: 10px;
-        }
+/* CLOSE */
+.woe-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+}
 
-        .navbar a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 14px;
-        }
+.woe-close:hover {
+    opacity: 1;
+}
 
-        .navbar a:hover {
-            text-decoration: underline;
-        }
+/* TITLE */
+.woe-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #9b5cff;
+    margin-bottom: 6px;
+}
 
-        /* ===== CONTENT ===== */
-        .content {
-            text-align: center;
-            padding: 20px;
-            flex: 1;
-        }
+.woe-route {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 18px;
+}
 
-        .content h1 {
-            font-size: 30px;
-            margin-bottom: 5px;
-        }
+/* INFO BOX */
+.trip-info {
+    background: rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 18px 14px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(155,92,255,0.25);
+}
 
-        .content h1 span {
-            color: #8f5bbd;
-        }
+.trip-info div {
+    margin-bottom: 14px;
+}
 
-        .tagline {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
+.trip-info div:last-child {
+    margin-bottom: 0;
+}
 
-        /* ===== IMAGE SCROLL ===== */
-        .image-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-        }
+.trip-info .label {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 4px;
+}
 
-        .image-container img {
-            width: 100vw;
-            scroll-snap-align: start;
-        }
+.trip-info .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
 
-        /* ===== FOOTER ===== */
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            font-size: 12px;
-            padding: 10px 0;
-        }
+/* NOTE */
+.woe-note {
+    background: rgba(155,92,255,0.12);
+    border: 1px solid rgba(155,92,255,0.3);
+    color: #e6d8ff;
+    padding: 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
 
-        /* ===== POPUP OVERLAY ===== */
-        .popup-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
+/* BUTTON */
+.woe-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #9b5cff, #6f2cff);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(155,92,255,0.35);
+}
 
-        .popup-box {
-            background: #fff;
-            width: 90%;
-            max-width: 420px;
-            padding: 25px 20px 30px;
-            border-radius: 14px;
-            text-align: center;
-            position: relative;
-        }
+.woe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(155,92,255,0.45);
+}
 
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .popup-box h2 {
-            font-size: 26px;
-            color: #ff3b3b;
-            margin-bottom: 18px;
-        }
-
-        .popup-date {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .popup-type {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e6bd6;
-            margin-bottom: 15px;
-        }
-
-        .popup-note {
-            background: #f4f4f4;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .popup-note span {
-            color: #ff3b3b;
-            font-weight: bold;
-        }
-
-        .popup-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #000;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 14px;
-        }
-
-        .popup-btn:hover {
-            background: #333;
-        }
-    </style>
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-    <img src="woe.png" alt="Logo woe.jastip" class="logo">
+<div class="woe-overlay" id="woePopup">
+    <div class="woe-modal">
+        <div class="woe-close" onclick="closePopup()">×</div>
 
-    <div class="navbar">
-        <a href="https://wa.me/6282258401126" target="_blank">Chat Admin</a>
-        <a href="Daftaralamat.html">Alamat Jastip</a>
-        <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit?usp=sharing" target="_blank">
-            Cek Paket
-        </a>
-    </div>
-</header>
+        <div class="woe-title">JADWAL TRIP JANUARI</div>
+        <div class="woe-route">Jakarta – Maluku Utara</div>
 
-<!-- ===== CONTENT ===== -->
-<div class="content">
-    <h1>Selamat datang di <span>woe.jastip</span>!</h1>
-    <div class="tagline">"Titipan Aman, No Drama! #woejastip"</div>
-
-    <div class="image-container">
-        <img src="woe1.jpg" alt="Ternate">
-        <img src="woe2.jpg" alt="Bacan">
-        <img src="woe3.jpg" alt="Obi">
-    </div>
-</div>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-    © 2024 woe.jastip By. Dhani Mochtar
-</footer>
-
-<!-- ===== POPUP CLOSING ===== -->
-<div class="popup-overlay" id="popupClosing">
-    <div class="popup-box">
-        <div class="popup-close" onclick="closePopup()">×</div>
-
-        <h2>JADWAL TRIP</h2>
-        <div class="popup-date">03 Januari 2025</div>
-        <div class="popup-type">CLOSING PENGIRIMAN</div>
-
-        <div class="popup-note">
-            Pengiriman <b>Jakarta ➜ Maluku Utara</b><br>
-            ditutup sementara.<br><br>
-            <span>Pastikan paket masuk sebelum tanggal di atas</span>
+        <div class="trip-info">
+            <div>
+                <span class="label">Closing Paket</span>
+                <span class="value">03 Januari 2025</span>
+            </div>
+            <div>
+                <span class="label">Kapal Berangkat</span>
+                <span class="value">05 Januari 2025</span>
+            </div>
+            <div>
+                <span class="label">Estimasi Tiba Di Ternate</span>
+                <span class="value">11 Januari 2025</span>
+            </div>
         </div>
 
-        <a href="https://wa.me/6282258401126" target="_blank" class="popup-btn">
+        <div class="woe-note">
+            Pastikan paket sudah masuk sebelum tanggal closing.
+        </div>
+
+        <a href="https://wa.me/6282258401126" class="woe-btn">
             Chat Admin
         </a>
     </div>
@@ -219,9 +173,10 @@
 
 <script>
 function closePopup() {
-    document.getElementById("popupClosing").style.display = "none";
+    document.getElementById('woePopup').style.display = 'none';
 }
 </script>
 
 </body>
 </html>
+
