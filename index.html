@@ -79,6 +79,53 @@ header {
     scroll-snap-align: start;
 }
 
+/* ================= KALKULATOR ================= */
+.calculator {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 16px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.calculator h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.calculator p {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.calculator input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+}
+
+.calculator button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#9b5cff,#6f2cff);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 /* ================= FOOTER FIXED ================= */
 footer {
     background: #000;
@@ -93,7 +140,7 @@ footer {
     z-index: 1000;
 }
 
-/* ================= POPUP IKLAN ================= */
+/* ================= POPUP IKLAN (ASLI) ================= */
 .woe-overlay {
     position: fixed;
     inset: 0;
@@ -191,34 +238,44 @@ footer {
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
-    <img src="woe.png" class="logo" alt="woejastip">
+    <img src="woe.png" class="logo">
     <div class="navbar">
-        <a href="https://wa.me/6282258401126">Chat Admin</a>
+        <a href="#kalkulator">Hitung Berat/Volume</a>
         <a href="Daftaralamat.html">Alamat Jastip</a>
         <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit">Cek Paket</a>
     </div>
 </header>
 
-<!-- ================= CONTENT ================= -->
 <div class="content">
     <h1>Selamat datang di <span>woe.jastip</span></h1>
     <div class="tagline">Titipan Aman, No Drama</div>
 
     <div class="image-container">
-        <img src="woe1.jpg" alt="">
-        <img src="woe2.jpg" alt="">
-        <img src="woe3.jpg" alt="">
+        <img src="woe1.jpg">
+        <img src="woe2.jpg">
+        <img src="woe3.jpg">
+    </div>
+
+    <!-- ===== KALKULATOR ===== -->
+    <div class="calculator" id="kalkulator">
+        <h2>Hitung Berat / Volume Paket</h2>
+        <p>Rumus: (Panjang × Lebar × Tinggi) / 4000</p>
+
+        <input type="number" id="p" placeholder="Panjang (cm)">
+        <input type="number" id="l" placeholder="Lebar (cm)">
+        <input type="number" id="t" placeholder="Tinggi (cm)">
+
+        <button onclick="hitung()">Hitung</button>
+        <div class="result" id="hasil"></div>
     </div>
 </div>
 
-<!-- ================= FOOTER ================= -->
 <footer>
     © 2025 Dhani Mochtar
 </footer>
 
-<!-- ================= POPUP IKLAN ================= -->
+<!-- ================= POPUP IKLAN (CHAT ADMIN TETAP) ================= -->
 <div class="woe-overlay" id="woePopup">
     <div class="woe-modal">
         <div class="woe-close" onclick="closePopup()">×</div>
@@ -236,7 +293,7 @@ footer {
                 <div class="value">23 Desember 2025</div>
             </div>
             <div>
-                <div class="label">Estimasi Tiba Di ternate</div>
+                <div class="label">Estimasi Tiba Di Ternate</div>
                 <div class="value">29 Desember 2025</div>
             </div>
         </div>
@@ -245,7 +302,10 @@ footer {
             Pastikan paket masuk sebelum tanggal closing.
         </div>
 
-        <a href="https://wa.me/6282258401126" class="woe-btn">Chat Admin</a>
+        <!-- CHAT ADMIN DIPERTAHANKAN -->
+        <a href="https://wa.me/6282258401126" class="woe-btn">
+            Chat Admin
+        </a>
     </div>
 </div>
 
@@ -253,7 +313,23 @@ footer {
 function closePopup() {
     document.getElementById("woePopup").style.display = "none";
 }
+
+function hitung() {
+    let p = document.getElementById("p").value;
+    let l = document.getElementById("l").value;
+    let t = document.getElementById("t").value;
+
+    if (p && l && t) {
+        let volume = (p * l * t) / 4000;
+        document.getElementById("hasil").innerHTML =
+            "Berat Volume: " + volume.toFixed(2) + " Kg";
+    } else {
+        document.getElementById("hasil").innerHTML =
+            "Lengkapi semua kolom!";
+    }
+}
 </script>
 
 </body>
 </html>
+
