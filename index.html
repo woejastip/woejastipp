@@ -3,26 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jadwal Trip Januari | woejastip</title>
+<title>woe.jastip</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+    min-height: 100vh;
 }
 
-/* OVERLAY */
+/* ================= HEADER ================= */
+header {
+    background-color: #000;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.navbar {
+    margin-top: 10px;
+}
+
+.navbar a {
+    color: #fff;
+    margin: 0 18px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ================= CONTENT ================= */
+.content {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.content h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.content h1 span {
+    color: #9b5cff;
+}
+
+.tagline {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* ================= IMAGE SCROLL ================= */
+.image-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.image-container img {
+    width: 100vw;
+    scroll-snap-align: start;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 12px;
+}
+
+/* ================= POPUP ================= */
 .woe-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.75);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     z-index: 9999;
 }
 
-/* MODAL */
 .woe-modal {
     background: linear-gradient(180deg, #111, #1a1a1a);
     width: 90%;
@@ -30,31 +102,24 @@
     border-radius: 20px;
     padding: 28px 22px;
     text-align: center;
+    color: #fff;
     position: relative;
     animation: fadeUp .4s ease;
-    color: #fff;
 }
 
-/* CLOSE */
 .woe-close {
     position: absolute;
     top: 14px;
     right: 16px;
     font-size: 22px;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: .7;
 }
 
-.woe-close:hover {
-    opacity: 1;
-}
-
-/* TITLE */
 .woe-title {
     font-size: 22px;
     font-weight: 700;
     color: #9b5cff;
-    margin-bottom: 6px;
 }
 
 .woe-route {
@@ -63,82 +128,88 @@
     margin-bottom: 18px;
 }
 
-/* INFO BOX */
 .trip-info {
     background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(155,92,255,.3);
     border-radius: 16px;
-    padding: 18px 14px;
+    padding: 16px;
     margin-bottom: 18px;
-    border: 1px solid rgba(155,92,255,0.25);
 }
 
 .trip-info div {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .trip-info div:last-child {
     margin-bottom: 0;
 }
 
-.trip-info .label {
-    display: block;
+.label {
     font-size: 12px;
     color: #aaa;
-    margin-bottom: 4px;
 }
 
-.trip-info .value {
+.value {
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
 }
 
-/* NOTE */
 .woe-note {
-    background: rgba(155,92,255,0.12);
-    border: 1px solid rgba(155,92,255,0.3);
-    color: #e6d8ff;
-    padding: 12px;
+    background: rgba(155,92,255,0.15);
     border-radius: 14px;
+    padding: 12px;
     font-size: 13px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-/* BUTTON */
 .woe-btn {
     display: inline-block;
-    background: linear-gradient(135deg, #9b5cff, #6f2cff);
+    background: linear-gradient(135deg,#9b5cff,#6f2cff);
     color: #fff;
-    padding: 13px 28px;
+    padding: 12px 28px;
     border-radius: 999px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    transition: 0.3s;
-    box-shadow: 0 8px 20px rgba(155,92,255,0.35);
 }
 
-.woe-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 26px rgba(155,92,255,0.45);
-}
-
-/* ANIMATION */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+<header>
+    <img src="woe.png" class="logo" alt="woejastip">
+    <div class="navbar">
+        <a href="https://wa.me/6282258401126">Chat Admin</a>
+        <a href="Daftaralamat.html">Alamat Jastip</a>
+        <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit">Cek Paket</a>
+    </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+<div class="content">
+    <h1>Selamat datang di <span>woe.jastip</span></h1>
+    <div class="tagline">Titipan Aman, No Drama</div>
+
+    <div class="image-container">
+        <img src="woe1.jpg">
+        <img src="woe2.jpg">
+        <img src="woe3.jpg">
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    © 2025 woe.jastip
+</footer>
+
+<!-- ================= POPUP ================= -->
 <div class="woe-overlay" id="woePopup">
     <div class="woe-modal">
         <div class="woe-close" onclick="closePopup()">×</div>
@@ -148,35 +219,32 @@
 
         <div class="trip-info">
             <div>
-                <span class="label">Closing Paket</span>
-                <span class="value">03 Januari 2025</span>
+                <div class="label">Closing Paket</div>
+                <div class="value">03 Januari 2025</div>
             </div>
             <div>
-                <span class="label">Kapal Berangkat</span>
-                <span class="value">05 Januari 2025</span>
+                <div class="label">Kapal Berangkat</div>
+                <div class="value">05 Januari 2025</div>
             </div>
             <div>
-                <span class="label">Estimasi Tiba Di Ternate</span>
-                <span class="value">11 Januari 2025</span>
+                <div class="label">Estimasi Tiba</div>
+                <div class="value">11 Januari 2025</div>
             </div>
         </div>
 
         <div class="woe-note">
-            Pastikan paket sudah masuk sebelum tanggal closing.
+            Pastikan paket masuk sebelum tanggal closing.
         </div>
 
-        <a href="https://wa.me/6282258401126" class="woe-btn">
-            Chat Admin
-        </a>
+        <a href="https://wa.me/6282258401126" class="woe-btn">Chat Admin</a>
     </div>
 </div>
 
 <script>
 function closePopup() {
-    document.getElementById('woePopup').style.display = 'none';
+    document.getElementById("woePopup").style.display = "none";
 }
 </script>
 
 </body>
 </html>
-
