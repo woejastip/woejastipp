@@ -19,7 +19,7 @@
 
 body{
     margin:0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     background:var(--bg);
     color:var(--text);
     min-height:100vh;
@@ -27,55 +27,54 @@ body{
     flex-direction:column;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .navbar{
     background:#000;
-    padding:14px 20px;
+    padding:10px;
     display:flex;
     justify-content:center;
 }
 
 .navbar img{
-    height:38px;
+    height:32px;
 }
 
-/* ===== FORM ===== */
+/* FORM */
 .form-container{
     background:#fff;
-    max-width:420px;
     width:100%;
-    margin:40px auto;
-    padding:28px;
-    border-radius:14px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    max-width:360px;   /* 🔹 diperkecil */
+    margin:20px auto;
+    padding:18px;      /* 🔹 lebih ramping */
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
 .form-container h2{
-    text-align:center;
-    font-size:18px;
+    font-size:15px;
     font-weight:600;
-    margin-bottom:24px;
+    text-align:center;
+    margin-bottom:16px;
+    line-height:1.4;
 }
 
 .form-group{
-    margin-bottom:16px;
+    margin-bottom:12px;
 }
 
 .form-group label{
-    font-size:13px;
-    font-weight:500;
-    margin-bottom:6px;
+    font-size:12px;
+    margin-bottom:4px;
     display:block;
 }
 
 .form-group input,
 .form-group select{
     width:100%;
-    padding:12px 14px;
-    border-radius:10px;
+    padding:10px 12px;
+    font-size:14px;
+    border-radius:8px;
     border:1px solid var(--border);
-    font-size:15px;
-    background:#fff;
 }
 
 .form-group input:focus,
@@ -84,57 +83,55 @@ body{
     border-color:var(--primary);
 }
 
-/* Select arrow clean */
 select{
     appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");
     background-repeat:no-repeat;
-    background-position:right 14px center;
+    background-position:right 10px center;
 }
 
-/* Button */
+/* BUTTON */
 button{
     width:100%;
-    padding:13px;
+    padding:11px;
+    font-size:14px;
+    font-weight:600;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
     background:var(--primary);
     color:#fff;
-    font-size:15px;
-    font-weight:600;
     cursor:pointer;
-    transition:.2s;
 }
 
 button:hover{
     background:#5c2f8a;
 }
 
-/* Back link */
+/* BACK */
 .back-link{
     display:block;
     text-align:center;
-    margin-top:18px;
-    font-size:14px;
-    text-decoration:none;
+    margin-top:12px;
+    font-size:13px;
     color:var(--primary);
+    text-decoration:none;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
     margin-top:auto;
     background:#000;
     color:#fff;
+    font-size:11px;
+    padding:10px;
     text-align:center;
-    font-size:12px;
-    padding:14px;
 }
 
-/* Responsive */
-@media(max-width:480px){
+/* EXTRA SMALL DEVICE */
+@media(max-width:360px){
     .form-container{
-        margin:20px;
-        padding:22px;
+        margin:14px;
+        padding:16px;
     }
 }
 </style>
@@ -152,7 +149,7 @@ footer{
     <form onsubmit="return saveData()">
         <div class="form-group">
             <label>Nama Lengkap</label>
-            <input type="text" id="nama" placeholder="Masukkan nama" required>
+            <input type="text" id="nama" placeholder="Nama lengkap" required>
         </div>
 
         <div class="form-group">
@@ -163,7 +160,7 @@ footer{
         <div class="form-group">
             <label>Pilih Kota</label>
             <select id="kota" required>
-                <option value="">-- Pilih Kota --</option>
+                <option value="">Pilih Kota</option>
                 <option value="ternate">Kota Ternate</option>
                 <option value="bacan kota">Bacan Kota</option>
                 <option value="obi laiwui">Obi Laiwui</option>
@@ -177,7 +174,7 @@ footer{
 </div>
 
 <footer>
-    © 2024 woe.jastip • By Dhani Mochtar
+    © 2024 woe.jastip
 </footer>
 
 <script>
