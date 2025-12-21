@@ -6,75 +6,69 @@
 <title>Tampilan Alamat</title>
 
 <style>
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background:#f5f5f5;
+body{
     margin:0;
-    padding:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+    background:#f5f5f5;
     color:#222;
 }
 
-/* ======================
-   HEADER
-====================== */
-.header {
+/* HEADER */
+.header{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
     padding:14px;
     background:#fff;
     font-weight:600;
     border-bottom:1px solid #eee;
 }
-.back {
-    font-size:18px;
-}
 
-/* ======================
-   CARD
-====================== */
-.card {
+/* CARD */
+.card{
     background:#fff;
-    border-radius:12px;
     margin:12px;
     padding:14px;
+    border-radius:12px;
 }
 
-/* ======================
-   LABEL & INPUT
-====================== */
-.label {
+/* LABEL */
+label{
     font-size:12px;
-    color:#999;
+    color:#888;
+    display:block;
     margin-bottom:6px;
 }
-.input {
+
+/* INPUT */
+input, textarea, select{
+    width:100%;
+    border:none;
     border-bottom:1px solid #eee;
     padding:10px 0;
     font-size:14px;
+    outline:none;
+    background:transparent;
 }
-.input:last-child {
-    border-bottom:none;
+textarea{
+    resize:none;
+}
+.select-box{
+    border-bottom:1px solid #eee;
+    padding-bottom:6px;
 }
 
-/* ======================
-   TOGGLE
-====================== */
-.toggle-row {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:12px;
-}
-.switch {
-    width:42px;
+/* TOGGLE */
+.toggle{
+    width:44px;
     height:24px;
-    background:#e0e0e0;
+    background:#ccc;
     border-radius:12px;
     position:relative;
+    cursor:pointer;
 }
-.switch::after {
-    content:"";
+.toggle::after{
+    content:'';
     width:20px;
     height:20px;
     background:#fff;
@@ -82,79 +76,72 @@ body {
     position:absolute;
     top:2px;
     left:2px;
+    transition:.2s;
 }
-.switch.on {
+.toggle.active{
     background:#34c759;
 }
-.switch.on::after {
-    left:20px;
+.toggle.active::after{
+    left:22px;
 }
 
-/* ======================
-   BUTTON
-====================== */
-.btn {
-    margin:14px;
-    padding:14px;
-    text-align:center;
-    border-radius:10px;
-    font-weight:600;
+/* TAG */
+.tags{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+.tag{
+    padding:6px 16px;
+    border-radius:20px;
+    border:1px solid #ddd;
+    font-size:13px;
     cursor:pointer;
 }
-.btn-red {
+.tag.active{
+    border-color:#ee4d2d;
+    color:#ee4d2d;
+}
+
+/* BUTTON */
+.btn{
+    margin:12px;
+    padding:14px;
+    border-radius:10px;
+    font-weight:600;
+    text-align:center;
+    cursor:pointer;
+}
+.btn-red{
     background:#ff2d55;
     color:#fff;
 }
-.btn-orange {
+.btn-orange{
     background:#ee4d2d;
     color:#fff;
 }
-.btn-outline {
+.btn-outline{
     border:1px solid #ee4d2d;
     color:#ee4d2d;
     background:#fff;
 }
 
-/* ======================
-   SHOPEE EXTRA
-====================== */
-.tag-row {
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-}
-.tag {
-    padding:6px 14px;
-    border-radius:20px;
-    border:1px solid #ddd;
-    font-size:13px;
-}
-.tag.active {
-    border-color:#ee4d2d;
-    color:#ee4d2d;
-}
-
-/* ======================
-   MAP PLACEHOLDER
-====================== */
-.map {
-    margin:12px;
+/* MAP */
+.map{
     height:160px;
+    margin:12px;
     background:#e6e6e6;
     border-radius:12px;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#777;
-    font-size:14px;
+    color:#666;
 }
 
-/* ======================
-   DIVIDER
-====================== */
-.divider {
+/* DIVIDER */
+.divider{
     height:8px;
-    background:#f0f0f0;
+    background:#eee;
     margin:20px 0;
 }
 </style>
@@ -162,108 +149,92 @@ body {
 
 <body>
 
-<!-- ======================
+<!-- =====================
      TAMPILAN 1 - TIKTOK
-====================== -->
-<div class="header">
-    <span class="back">←</span>
-    <span>Tambahkan alamat baru</span>
+===================== -->
+<div class="header">← Tambahkan alamat baru</div>
+
+<div class="card">
+    <label>Informasi Kontak</label>
+    <input placeholder="Nama Lengkap">
+    <input placeholder="Nomor Telepon">
 </div>
 
 <div class="card">
-    <div class="label">Informasi kontak</div>
-    <div class="input">Riyanti 08123xxxxxx ternate</div>
-    <div class="input">ID +62 ▼ 082258401126</div>
+    <label>Informasi Alamat</label>
+
+    <div class="select-box">
+        <select>
+            <option>Indonesia</option>
+        </select>
+    </div>
+
+    <textarea rows="3" placeholder="Provinsi, Kota, Kecamatan, Kelurahan"></textarea>
+
+    <textarea rows="4" placeholder="Nama jalan, No rumah, RT/RW"></textarea>
+
+    <textarea rows="2" placeholder="Detail lainnya (blok, patokan)"></textarea>
 </div>
 
-<div class="card">
-    <div class="label">Informasi alamat</div>
-    <div class="input">Indonesia ▼</div>
-    <div class="input">
-        Jawa Barat<br>
-        Kota Bekasi<br>
-        Pondok Melati<br>
-        Jati Rahayu
-    </div>
-    <div class="input">
-        Komplek TVRI Blok A7. Jl Bakti 2 No.32A RT006/RW012
-        Kampung Rawabacang 17414 (woe.jastip)
-        (Riyanti 08123xxxxxx) ternate
-    </div>
-    <div class="input" style="color:#aaa">
-        Masukkan detail lainnya (lantai, blok, patokan)
-    </div>
-</div>
-
-<div class="card">
-    <div class="toggle-row">
-        <span>Tetapkan sebagai default</span>
-        <div class="switch on"></div>
-    </div>
+<div class="card" style="display:flex;justify-content:space-between;align-items:center">
+    <span>Tetapkan sebagai default</span>
+    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
 </div>
 
 <div class="btn btn-red">Simpan</div>
 
 <div class="divider"></div>
 
-<!-- ======================
+<!-- =====================
      TAMPILAN 2 - SHOPEE
-====================== -->
-<div class="header">
-    <span class="back">←</span>
-    <span>Ubah Alamat</span>
-</div>
+===================== -->
+<div class="header">← Ubah Alamat</div>
 
 <div class="card">
-    <div class="label">Alamat</div>
-    <div class="input">Dani 08124xxxxxx obi_laiwui</div>
+    <label>Nama Lengkap</label>
+    <input value="Dani">
 
-    <div class="label" style="margin-top:12px">Nomor Telepon</div>
-    <div class="input">(+62) 822-5840-1126</div>
+    <label style="margin-top:12px">Nomor Telepon</label>
+    <input value="(+62) 822-5840-1126">
 
-    <div class="label" style="margin-top:12px">
-        Provinsi, Kota, Kecamatan, Kode Pos
-    </div>
-    <div class="input">
-        JAWA BARAT<br>
-        KOTA BEKASI<br>
-        PONDOK MELATI<br>
-        17414
-    </div>
+    <label style="margin-top:12px">Provinsi, Kota, Kecamatan, Kode Pos</label>
+    <textarea rows="3">Jawa Barat
+Kota Bekasi
+Pondok Melati
+17414</textarea>
 
-    <div class="label" style="margin-top:12px">
-        Nama Jalan, Gedung, No. Rumah
-    </div>
-    <div class="input">
-        Komplek TVRI Blok A7. Jl Bakti 2 No.32A RT006/RW012
-        Kampung Rawabacang 17414 (woe.jastip)
-        (Dani 08124xxxxxx) obi laiwui
-    </div>
+    <label style="margin-top:12px">Nama Jalan, Gedung, No Rumah</label>
+    <textarea rows="4">Komplek TVRI Blok A7 Jl Bakti 2 No.32A RT006/RW012</textarea>
 
-    <div class="label" style="margin-top:12px">
-        Detail Lainnya (Blok / Unit No., Patokan)
-    </div>
-    <div class="input" style="color:#aaa">-</div>
+    <label style="margin-top:12px">Detail Lainnya</label>
+    <textarea rows="2"></textarea>
 </div>
 
 <div class="map">Google Maps Preview</div>
 
 <div class="card">
-    <div class="toggle-row">
+    <div style="display:flex;justify-content:space-between;align-items:center">
         <span>Atur sebagai Alamat Utama</span>
-        <div class="switch on"></div>
+        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
     </div>
 
-    <div class="tag-row">
-        <div class="tag">Kantor</div>
-        <div class="tag active">Rumah</div>
+    <div class="tags">
+        <div class="tag" onclick="setTag(this)">Kantor</div>
+        <div class="tag active" onclick="setTag(this)">Rumah</div>
     </div>
 </div>
 
-<div style="display:flex; gap:10px; padding:0 12px 20px">
+<div style="display:flex;gap:10px;padding:0 12px 20px">
     <div class="btn btn-outline" style="flex:1">Hapus Alamat</div>
     <div class="btn btn-orange" style="flex:1">Simpan</div>
 </div>
+
+<script>
+function setTag(el){
+    document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+}
+</script>
 
 </body>
 </html>
