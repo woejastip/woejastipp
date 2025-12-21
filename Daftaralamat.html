@@ -39,13 +39,21 @@ body{
     height:32px;
 }
 
+/* CENTER WRAPPER */
+.main{
+    flex:1;
+    display:flex;
+    align-items:center;     /* 🔹 tengah atas-bawah */
+    justify-content:center; /* 🔹 tengah kiri-kanan */
+    padding:16px;
+}
+
 /* FORM */
 .form-container{
     background:#fff;
     width:100%;
-    max-width:360px;   /* 🔹 diperkecil */
-    margin:20px auto;
-    padding:18px;      /* 🔹 lebih ramping */
+    max-width:360px;
+    padding:18px;
     border-radius:12px;
     box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
@@ -119,20 +127,11 @@ button:hover{
 
 /* FOOTER */
 footer{
-    margin-top:auto;
     background:#000;
     color:#fff;
     font-size:11px;
     padding:10px;
     text-align:center;
-}
-
-/* EXTRA SMALL DEVICE */
-@media(max-width:360px){
-    .form-container{
-        margin:14px;
-        padding:16px;
-    }
 }
 </style>
 </head>
@@ -143,45 +142,47 @@ footer{
     <img src="woe.png" alt="woe.jastip">
 </div>
 
-<div class="form-container">
-    <h2>Isi Data Untuk Mendapatkan Alamat</h2>
+<div class="main">
+    <div class="form-container">
+        <h2>Isi Data Untuk Mendapatkan Alamat</h2>
 
-    <form onsubmit="return saveData()">
-        <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" id="nama" placeholder="Nama lengkap" required>
-        </div>
+        <form onsubmit="return saveData()">
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" required>
+            </div>
 
-        <div class="form-group">
-            <label>Nomor Telepon</label>
-            <input type="tel" id="telepon" placeholder="08xxxxxxxxxx" required>
-        </div>
+            <div class="form-group">
+                <label>Nomor Telepon</label>
+                <input type="tel" id="telepon" required>
+            </div>
 
-        <div class="form-group">
-            <label>Pilih Kota</label>
-            <select id="kota" required>
-                <option value="">Pilih Kota</option>
-                <option value="ternate">Kota Ternate</option>
-                <option value="bacan kota">Bacan Kota</option>
-                <option value="obi laiwui">Obi Laiwui</option>
-                <option value="obi kawasi">Obi Kawasi</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>Pilih Kota</label>
+                <select id="kota" required>
+                    <option value="">Pilih Kota</option>
+                    <option value="ternate">Kota Ternate</option>
+                    <option value="bacan kota">Bacan Kota</option>
+                    <option value="obi laiwui">Obi Laiwui</option>
+                    <option value="obi kawasi">Obi Kawasi</option>
+                </select>
+            </div>
 
-        <button type="submit">Lihat Alamat</button>
-        <a href="index.html" class="back-link">← Kembali</a>
-    </form>
+            <button type="submit">Lihat Alamat</button>
+            <a href="index.html" class="back-link">← Kembali</a>
+        </form>
+    </div>
 </div>
 
 <footer>
-    © 2025 Dhani Mochtar
+    © 2024 woe.jastip
 </footer>
 
 <script>
 function saveData(){
-    localStorage.setItem("nama", document.getElementById("nama").value);
-    localStorage.setItem("wa", document.getElementById("telepon").value);
-    localStorage.setItem("kota", document.getElementById("kota").value);
+    localStorage.setItem("nama", nama.value);
+    localStorage.setItem("wa", telepon.value);
+    localStorage.setItem("kota", kota.value);
     window.location.href="Prosesalamat.html";
     return false;
 }
