@@ -3,237 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tampilan Alamat</title>
+<title>Tambahkan Alamat Baru</title>
 
 <style>
 body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+    font-family: Arial, sans-serif;
     background:#f5f5f5;
-    color:#222;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:14px;
+    padding:15px;
     background:#fff;
-    font-weight:600;
+    font-weight:bold;
     border-bottom:1px solid #eee;
 }
+.header span{
+    margin-left:10px;
+}
 
-/* CARD */
-.card{
+/* ===== CONTAINER ===== */
+.container{
+    padding:15px;
+}
+
+/* ===== SECTION ===== */
+.section{
     background:#fff;
-    margin:12px;
-    padding:14px;
-    border-radius:12px;
-}
-
-/* LABEL */
-label{
-    font-size:12px;
-    color:#888;
-    display:block;
-    margin-bottom:6px;
-}
-
-/* INPUT */
-input, textarea, select{
-    width:100%;
-    border:none;
-    border-bottom:1px solid #eee;
-    padding:10px 0;
-    font-size:14px;
-    outline:none;
-    background:transparent;
-}
-textarea{
-    resize:none;
-}
-.select-box{
-    border-bottom:1px solid #eee;
-    padding-bottom:6px;
-}
-
-/* TOGGLE */
-.toggle{
-    width:44px;
-    height:24px;
-    background:#ccc;
-    border-radius:12px;
-    position:relative;
-    cursor:pointer;
-}
-.toggle::after{
-    content:'';
-    width:20px;
-    height:20px;
-    background:#fff;
-    border-radius:50%;
-    position:absolute;
-    top:2px;
-    left:2px;
-    transition:.2s;
-}
-.toggle.active{
-    background:#34c759;
-}
-.toggle.active::after{
-    left:22px;
-}
-
-/* TAG */
-.tags{
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-}
-.tag{
-    padding:6px 16px;
-    border-radius:20px;
-    border:1px solid #ddd;
-    font-size:13px;
-    cursor:pointer;
-}
-.tag.active{
-    border-color:#ee4d2d;
-    color:#ee4d2d;
-}
-
-/* BUTTON */
-.btn{
-    margin:12px;
-    padding:14px;
     border-radius:10px;
-    font-weight:600;
-    text-align:center;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:13px;
+    color:#888;
+    margin-bottom:10px;
+}
+
+/* ===== FIELD ===== */
+.field{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+.field:last-child{
+    border-bottom:none;
+}
+.field.gray{
+    color:#555;
+}
+
+/* ===== TOGGLE ===== */
+.toggle{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+}
+.toggle input{
+    width:40px;
+    height:20px;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+    width:100%;
+    background:#ff2c55;
+    color:#fff;
+    border:none;
+    padding:14px;
+    font-size:16px;
+    border-radius:8px;
+    margin-top:20px;
     cursor:pointer;
 }
-.btn-red{
-    background:#ff2d55;
-    color:#fff;
-}
-.btn-orange{
-    background:#ee4d2d;
-    color:#fff;
-}
-.btn-outline{
-    border:1px solid #ee4d2d;
-    color:#ee4d2d;
-    background:#fff;
-}
 
-/* MAP */
-.map{
-    height:160px;
-    margin:12px;
-    background:#e6e6e6;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#666;
-}
-
-/* DIVIDER */
-.divider{
-    height:8px;
-    background:#eee;
-    margin:20px 0;
+/* ===== SMALL TEXT ===== */
+.note{
+    font-size:11px;
+    color:#999;
+    margin-top:10px;
+    text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================
-     TAMPILAN 1 - TIKTOK
-===================== -->
-<div class="header">← Tambahkan alamat baru</div>
-
-<div class="card">
-    <label>Informasi Kontak</label>
-    <input placeholder="Nama Lengkap">
-    <input placeholder="Nomor Telepon">
+<div class="header">
+    ← <span>Tambahkan alamat baru</span>
 </div>
 
-<div class="card">
-    <label>Informasi Alamat</label>
+<div class="container">
 
-    <div class="select-box">
-        <select>
-            <option>Indonesia</option>
-        </select>
+    <!-- INFORMASI KONTAK -->
+    <div class="section">
+        <div class="section-title">Informasi kontak</div>
+        <div class="field" id="kontak">Loading...</div>
+        <div class="field gray">ID +62 | 082258401126</div>
     </div>
 
-    <textarea rows="3" placeholder="Provinsi, Kota, Kecamatan, Kelurahan"></textarea>
-
-    <textarea rows="4" placeholder="Nama jalan, No rumah, RT/RW"></textarea>
-
-    <textarea rows="2" placeholder="Detail lainnya (blok, patokan)"></textarea>
-</div>
-
-<div class="card" style="display:flex;justify-content:space-between;align-items:center">
-    <span>Tetapkan sebagai default</span>
-    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
-</div>
-
-<div class="btn btn-red">Simpan</div>
-
-<div class="divider"></div>
-
-<!-- =====================
-     TAMPILAN 2 - SHOPEE
-===================== -->
-<div class="header">← Ubah Alamat</div>
-
-<div class="card">
-    <label>Nama Lengkap</label>
-    <input value="Dani">
-
-    <label style="margin-top:12px">Nomor Telepon</label>
-    <input value="(+62) 822-5840-1126">
-
-    <label style="margin-top:12px">Provinsi, Kota, Kecamatan, Kode Pos</label>
-    <textarea rows="3">Jawa Barat
-Kota Bekasi
-Pondok Melati
-17414</textarea>
-
-    <label style="margin-top:12px">Nama Jalan, Gedung, No Rumah</label>
-    <textarea rows="4">Komplek TVRI Blok A7 Jl Bakti 2 No.32A RT006/RW012</textarea>
-
-    <label style="margin-top:12px">Detail Lainnya</label>
-    <textarea rows="2"></textarea>
-</div>
-
-<div class="map">Google Maps Preview</div>
-
-<div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-        <span>Atur sebagai Alamat Utama</span>
-        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+    <!-- INFORMASI ALAMAT -->
+    <div class="section">
+        <div class="section-title">Informasi alamat</div>
+        <div class="field gray">Indonesia</div>
+        <div class="field gray">
+            Jawa Barat<br>
+            Kota Bekasi<br>
+            Pondok Melati<br>
+            Jati Rahayu
+        </div>
+        <div class="field" id="alamatLengkap">Loading...</div>
     </div>
 
-    <div class="tags">
-        <div class="tag" onclick="setTag(this)">Kantor</div>
-        <div class="tag active" onclick="setTag(this)">Rumah</div>
+    <!-- PENGATURAN -->
+    <div class="section">
+        <div class="toggle">
+            <span>Tetapkan sebagai default</span>
+            <input type="checkbox" checked>
+        </div>
     </div>
-</div>
 
-<div style="display:flex;gap:10px;padding:0 12px 20px">
-    <div class="btn btn-outline" style="flex:1">Hapus Alamat</div>
-    <div class="btn btn-orange" style="flex:1">Simpan</div>
+    <div class="note">
+        Dengan mengklik Simpan, Anda menyatakan telah membaca Kebijakan Privasi Platform.
+    </div>
+
+    <button class="btn">Simpan</button>
+
 </div>
 
 <script>
-function setTag(el){
-    document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
-    el.classList.add('active');
-}
+const nama = localStorage.getItem("nama") || "Nama";
+const wa   = localStorage.getItem("wa") || "08xxxxxxxxxx";
+const kota = localStorage.getItem("kota") || "";
+
+document.getElementById("kontak").textContent =
+    nama + " " + wa + " " + kota;
+
+document.getElementById("alamatLengkap").innerHTML =
+`Komplek TVRI Blok A7, Jl Bakti 2 No.32A RT006/RW012<br>
+Kampung Rawabacang 17414 (woe.jastip)<br>
+(${nama} ${wa}) ${kota}`;
 </script>
 
 </body>
