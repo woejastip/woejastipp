@@ -1,227 +1,154 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informasi Alamat</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tambahkan Alamat Baru</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            background-image: url('background-image.jpg'); /* Ganti dengan path gambar latar belakang */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0 20px;
-        }
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+}
 
-        header {
-            width: 100%;
-            background-color: #000;
-            color: #fff;
-            padding: 15px 0;  /* Mengurangi padding */
-            text-align: center;
-            font-size: 16px;  /* Mengurangi ukuran font */
-        }
+/* ===== HEADER ===== */
+.header{
+    display:flex;
+    align-items:center;
+    padding:15px;
+    background:#fff;
+    font-weight:bold;
+    border-bottom:1px solid #eee;
+}
+.header span{
+    margin-left:10px;
+}
 
-        /* Navbar untuk logo di tengah */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;  /* Mengatur logo di tengah */
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #000;
-            z-index: 1000;
-        }
+/* ===== CONTAINER ===== */
+.container{
+    padding:15px;
+}
 
-        .navbar img.logo {
-            width: 150px; /* Ukuran logo lebih besar */
-            height: auto; /* Menjaga rasio gambar */
-        }
+/* ===== SECTION ===== */
+.section{
+    background:#fff;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
 
-        .navbar a {
-            color: #fff;
-            margin: 0 4px;
-            text-decoration: none;
-            font-size: 14px;
-        }
+.section-title{
+    font-size:13px;
+    color:#888;
+    margin-bottom:10px;
+}
 
-        .navbar a:hover {
-            text-decoration: underline;
-        }
+/* ===== FIELD ===== */
+.field{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+.field:last-child{
+    border-bottom:none;
+}
+.field.gray{
+    color:#555;
+}
 
-        /* Desain instruksi */
-        .instruction {
-            font-size: 12px;
-            color: #333;
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            margin-top: 5px; /* Geser 3 cm ke bawah */
-        }
+/* ===== TOGGLE ===== */
+.toggle{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+}
+.toggle input{
+    width:40px;
+    height:20px;
+}
 
-        .phone-screen {
-            width: 100%;
-            max-width: 400px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            margin-top: -15.6px; /* Geser 2 cm ke atas */
-            margin-bottom: 20px;
-        }
+/* ===== BUTTON ===== */
+.btn{
+    width:100%;
+    background:#ff2c55;
+    color:#fff;
+    border:none;
+    padding:14px;
+    font-size:16px;
+    border-radius:8px;
+    margin-top:20px;
+    cursor:pointer;
+}
 
-        .info-box {
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            background: #f9f9f9;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #333;
-            position: relative;
-        }
-
-        .info-box p {
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        /* Mengubah warna teks untuk bagian penting */
-        .info-box p strong {
-            font-weight: 600;
-            color: #8f5bbd;  /* Mengubah warna teks menjadi #f6647e */
-        }
-
-        .change-address-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #3498db;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .change-address-btn:hover {
-            background-color: #2980b9;
-        }
-
-        /* Link Kembali */
-        .back-link {
-            display: block;
-            text-align: center;
-            font-size: 14px;
-            margin-top: -10px; /* Mengurangi margin untuk geser ke atas */
-            color: #8f5bbd;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 8px 0;  /* Mengurangi padding */
-            font-size: 12px;  /* Mengurangi ukuran font */
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        @media (max-width: 600px) {
-            .phone-screen {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .info-box {
-                font-size: 16px;
-                padding: 15px;
-            }
-
-            .change-address-btn {
-                font-size: 18px;
-                padding: 15px;
-            }
-
-            .navbar {
-                font-size: 12px;
-            }
-
-            .instruction {
-                font-size: 16px;
-            }
-        }
-    </style>
+/* ===== SMALL TEXT ===== */
+.note{
+    font-size:11px;
+    color:#999;
+    margin-top:10px;
+    text-align:center;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="navbar">
-        <img src="woe.png" alt="Logo woejastip" class="logo">
+<div class="header">
+    ← <span>Tambahkan alamat baru</span>
+</div>
+
+<div class="container">
+
+    <!-- INFORMASI KONTAK -->
+    <div class="section">
+        <div class="section-title">Informasi kontak</div>
+        <div class="field" id="kontak">Loading...</div>
+        <div class="field gray">ID +62 | 082258401126</div>
     </div>
 
-    <div class="instruction">
-        Silakan copypaste untuk mengedit alamat teman-teman. Ikuti sesuai keterangan di bawah ini agar tidak terjadi kesalahan. Bisa digunakan untuk alamat di Shopee, Tokopedia, TikTok, dan platform lainnya!
+    <!-- INFORMASI ALAMAT -->
+    <div class="section">
+        <div class="section-title">Informasi alamat</div>
+        <div class="field gray">Indonesia</div>
+        <div class="field gray">
+            Jawa Barat<br>
+            Kota Bekasi<br>
+            Pondok Melati<br>
+            Jati Rahayu
+        </div>
+        <div class="field" id="alamatLengkap">Loading...</div>
     </div>
 
-    <div class="phone-screen">
-        <div class="info-box">
-            <p><strong>Nama Lengkap </strong><br><span id="displayKontak">Loading...</span></p>
-            <p><strong>Nomor Telepon </strong><br>082258401126</p>
-               <p><strong>Provinsi, Kota, Kecamatan, Kode Pos:</strong><br>JAWA BARAT<br>KOTA BEKASI<br>PONDOK MELATI<br>JATIRAHAYU<br>17414</p>
-            <p><strong>Nama Jalan, Gedung, No. Rumah </strong><br>Komplek TVRI Blok A7. Jl Bakti 2 No.32A  RT006/RW012  Kampung Rawabacang 17414 (woe.jastip) ( <span id="displayNama">Nama</span> <span id="displayWA">Nomor WA</span>) <span id="displayKota">Loading...</span></p>
+    <!-- PENGATURAN -->
+    <div class="section">
+        <div class="toggle">
+            <span>Tetapkan sebagai default</span>
+            <input type="checkbox" checked>
         </div>
     </div>
 
-    <!-- Tautan Kembali -->
-    <a href="Daftaralamat.html" class="back-link">Kembali</a>
+    <div class="note">
+        Dengan mengklik Simpan, Anda menyatakan telah membaca Kebijakan Privasi Platform.
+    </div>
 
-    <script>
-        // Mendapatkan data dari localStorage atau default jika data tidak ditemukan
-        var nama = localStorage.getItem("nama") || "Data tidak ditemukan";
-        var wa = localStorage.getItem("wa") || "Data tidak ditemukan";
-        var kota = localStorage.getItem("kota") || "Data kota tidak ditemukan"; // Ambil data kota
+    <button class="btn">Simpan</button>
 
-        // Menampilkan data pada elemen yang sesuai
-        document.getElementById("displayKontak").textContent = "" + nama + " " + wa + " " + kota; // Menambahkan kota
-        document.getElementById("displayNama").textContent = nama;
-        document.getElementById("displayWA").textContent = wa;
-        document.getElementById("displayKota").textContent = kota; // Menambahkan kota ke bagian Nama Jalan, Gedung, No. Rumah
-    </script>
+</div>
 
-    <footer>
-        &copy; 2024 woe.jastip By. Dhani Mochtar
-    </footer>
+<script>
+const nama = localStorage.getItem("nama") || "Nama";
+const wa   = localStorage.getItem("wa") || "08xxxxxxxxxx";
+const kota = localStorage.getItem("kota") || "";
+
+document.getElementById("kontak").textContent =
+    nama + " " + wa + " " + kota;
+
+document.getElementById("alamatLengkap").innerHTML =
+`Komplek TVRI Blok A7, Jl Bakti 2 No.32A RT006/RW012<br>
+Kampung Rawabacang 17414 (woe.jastip)<br>
+(${nama} ${wa}) ${kota}`;
+</script>
 
 </body>
 </html>
