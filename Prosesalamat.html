@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tambahkan Alamat Baru</title>
+<title>Simulasi Alamat</title>
 
 <style>
 body{
@@ -28,6 +28,26 @@ body{
 /* ===== CONTAINER ===== */
 .container{
     padding:15px;
+}
+
+/* ===== INFO SIMULASI ===== */
+.info-box{
+    background:#fff4f6;
+    border:1px solid #ffd1da;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+.info-box h3{
+    margin:0 0 6px 0;
+    font-size:14px;
+    color:#ff2c55;
+}
+.info-box p{
+    margin:0;
+    font-size:12px;
+    color:#555;
+    line-height:1.5;
 }
 
 /* ===== SECTION ===== */
@@ -95,10 +115,20 @@ body{
 <body>
 
 <div class="header">
-    ← <span>Tambahkan alamat baru</span>
+    ← <span>Simulasi Alamat</span>
 </div>
 
 <div class="container">
+
+    <!-- PENJELASAN -->
+    <div class="info-box">
+        <h3>Simulasi Alamat</h3>
+        <p>
+            Tampilan simulasi ini dibuat <b>sama persis seperti format alamat di TikTok</b>.<br>
+            Alamat ini dapat digunakan untuk pengiriman di <b>TikTok Shop, Shopee, dan platform lainnya</b>.<br>
+            Data nama, WhatsApp, dan kota akan otomatis menyesuaikan.
+        </p>
+    </div>
 
     <!-- INFORMASI KONTAK -->
     <div class="section">
@@ -139,7 +169,7 @@ body{
 <script>
 const nama = localStorage.getItem("nama") || "Nama";
 const wa   = localStorage.getItem("wa") || "08xxxxxxxxxx";
-const kota = localStorage.getItem("kota") || "";
+const kota = localStorage.getItem("kota") || "Kota Tujuan";
 
 document.getElementById("kontak").textContent =
     nama + " " + wa + " " + kota;
