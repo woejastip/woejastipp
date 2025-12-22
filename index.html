@@ -55,7 +55,7 @@ header {
 /* ================= CONTENT ================= */
 .content {
     text-align: center;
-    padding: 120px 10px 80px; /* dikurangi agar sesuai hp */
+    padding: 120px 10px 80px;
 }
 
 .content h1 {
@@ -111,14 +111,14 @@ header {
     margin-bottom: 10px;
 }
 
-.calculator input, .calculator select {
+.calculator input,
+.calculator select {
     width: 100%;
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 14px;
-    box-sizing: border-box;
 }
 
 .calculator button {
@@ -130,7 +130,6 @@ header {
     color: #fff;
     font-weight: 600;
     cursor: pointer;
-    font-size: 14px;
 }
 
 .result {
@@ -143,8 +142,6 @@ header {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
-    box-sizing: border-box;
-    text-align: center; /* Hasil di tengah */
 }
 
 /* ================= FOOTER FIXED ================= */
@@ -156,9 +153,7 @@ footer {
     font-size: 11px;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    z-index: 1000;
 }
 
 /* ================= POPUP IKLAN ================= */
@@ -182,7 +177,6 @@ footer {
     color: #fff;
     position: relative;
     animation: fadeUp .4s ease;
-    box-sizing: border-box;
 }
 
 .woe-close {
@@ -206,14 +200,13 @@ footer {
     margin-bottom: 12px;
 }
 
-/* ================= TRIP INFO CENTER ================= */
+/* ===== TRIP INFO CENTER (INI YANG PENTING) ===== */
 .trip-info {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(155,92,255,.3);
     border-radius: 14px;
     padding: 12px;
     margin-bottom: 14px;
-    text-align: center; /* teks di tengah */
     font-size: 13px;
 }
 
@@ -258,20 +251,6 @@ footer {
     from {opacity:0; transform:translateY(16px);}
     to {opacity:1; transform:translateY(0);}
 }
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 480px) {
-    .content h1 { font-size: 20px; }
-    .tagline { font-size: 11px; }
-    .calculator h2 { font-size: 15px; }
-    .calculator p { font-size: 11px; }
-    .result { font-size: 12px; line-height: 18px; }
-    .navbar a { font-size: 11px; margin: 2px 4px; }
-    .woe-title { font-size: 16px; }
-    .woe-route { font-size: 11px; }
-    .trip-info { font-size: 12px; padding: 10px; }
-    .woe-note { font-size: 11px; padding: 6px; }
-}
 </style>
 </head>
 
@@ -282,7 +261,7 @@ footer {
     <div class="navbar">
         <a href="#kalkulator">Hitung Berat/Volume</a>
         <a href="Daftaralamat.html">Alamat Jastip</a>
-        <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit">Cek Paket</a>
+        <a href="cekpaket.html">Cek Paket</a>
     </div>
 </header>
 
@@ -314,16 +293,13 @@ footer {
         </select>
 
         <button onclick="hitung()">Hitung</button>
-        <div class="result" id="hasil">
-            Berat Volume dan ongkir akan muncul di sini
-        </div>
+        <div class="result" id="hasil">Berat Volume dan ongkir akan muncul di sini</div>
     </div>
 </div>
 
-<footer>
-    © 2025 Dhani Mochtar
-</footer>
+<footer>© 2025 Dhani Mochtar</footer>
 
+<!-- ===== POPUP IKLAN NORMAL ===== -->
 <div class="woe-overlay" id="woePopup">
     <div class="woe-modal">
         <div class="woe-close" onclick="closePopup()">×</div>
@@ -350,50 +326,42 @@ footer {
             Pastikan paket masuk sebelum tanggal closing.
         </div>
 
-        <a href="https://wa.me/6282258401126" class="woe-btn">
-            Chat Admin
-        </a>
+        <a href="https://wa.me/6282258401126" class="woe-btn">Chat Admin</a>
     </div>
 </div>
 
 <script>
-function closePopup() {
+function closePopup(){
     document.getElementById("woePopup").style.display = "none";
 }
 
-function hitung() {
+function hitung(){
     let p = parseFloat(document.getElementById("p").value);
     let l = parseFloat(document.getElementById("l").value);
     let t = parseFloat(document.getElementById("t").value);
     let beratReal = parseFloat(document.getElementById("beratReal").value);
     let tujuan = document.getElementById("tujuan").value;
 
-    if (!p || !l || !t || !beratReal || !tujuan) {
-        document.getElementById("hasil").innerHTML = "Lengkapi semua kolom!";
+    if(!p || !l || !t || !beratReal || !tujuan){
+        hasil.innerHTML = "Lengkapi semua kolom!";
         return;
     }
 
-    let beratVolume = (p * l * t) / 4000;
-    let beratFinal = Math.max(beratVolume, beratReal);
+    let volume = (p*l*t)/4000;
+    let berat = Math.max(volume, beratReal);
 
-    let tarif = { "Ternate":20000, "Bacan":25000, "Laiwui":27000, "Kawasi":33000 };
-    let ongkirNormal = beratFinal * tarif[tujuan];
+    let tarif = {Ternate:20000,Bacan:25000,Laiwui:27000,Kawasi:33000};
+    let total = berat * tarif[tujuan];
+    let diskon = berat >= 10 ? berat * 2000 : 0;
 
-    let diskon = 0;
-    if (beratFinal >= 10) diskon = beratFinal * 2000;
-
-    let ongkirAkhir = ongkirNormal - diskon;
-
-    document.getElementById("hasil").innerHTML =
-        "Berat Volume: " + beratVolume.toFixed(2) + " Kg<br>" +
-        "Berat Real: " + beratReal.toFixed(2) + " Kg<br>" +
-        "Berat Terpakai: " + beratFinal.toFixed(2) + " Kg<br>" +
-        "Ongkir Normal: Rp " + ongkirNormal.toLocaleString() + "<br>" +
-        (diskon > 0 ? "Diskon: Rp " + diskon.toLocaleString() + "<br>" : "") +
-        "Ongkir Bayar: Rp " + ongkirAkhir.toLocaleString();
+    hasil.innerHTML =
+        `Berat Volume: ${volume.toFixed(2)} Kg<br>
+         Berat Terpakai: ${berat.toFixed(2)} Kg<br>
+         Ongkir Bayar: Rp ${(total-diskon).toLocaleString()}`;
 }
 </script>
 
 </body>
 </html>
+
 
