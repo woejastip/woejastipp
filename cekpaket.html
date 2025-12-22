@@ -10,19 +10,22 @@
     box-sizing:border-box;
 }
 
-body{
+/* ===== GLOBAL ===== */
+html, body{
     margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
     font-family:Arial, sans-serif;
     background:#f4f6f8;
-    color:#000;
-    overflow-x:hidden; /* 🔥 cegah geser kiri kanan */
+    overflow:hidden; /* TIDAK BISA GESER */
 }
 
-/* ================= HEADER FIXED ================= */
+/* ===== HEADER ===== */
 header{
     background:#000;
-    text-align:center;
     padding:14px 0;
+    text-align:center;
     position:fixed;
     top:0;
     left:0;
@@ -32,52 +35,39 @@ header{
 
 .logo{
     width:120px;
-    max-width:40vw;
-    display:block;
-    margin:0 auto;
 }
 
-.navbar{
-    margin-top:6px;
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.navbar a{
-    color:#fff;
-    font-size:12px;
-    text-decoration:none;
-}
-
-/* ================= CONTENT ================= */
-.content{
-    min-height:100vh;
-    padding:150px 14px 100px; /* aman dari header & footer */
+/* ===== MAIN ===== */
+.main{
+    position:absolute;
+    top:70px;        /* tinggi header */
+    bottom:60px;     /* tinggi footer */
+    left:0;
+    right:0;
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:16px;
 }
 
-/* ================= BOX ================= */
+/* ===== BOX ===== */
 .box{
     width:100%;
-    max-width:340px; /* 🔥 pas HP */
+    max-width:340px;
     background:#fff;
     padding:22px 18px;
     border-radius:16px;
-    box-shadow:0 6px 14px rgba(0,0,0,.1);
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
     text-align:center;
 }
 
-/* ================= FORM ================= */
 .box h3{
-    margin-bottom:16px;
+    margin:0 0 16px;
     font-size:16px;
     color:#333;
 }
 
+/* ===== FORM ===== */
 input, button{
     width:100%;
     padding:12px;
@@ -91,63 +81,58 @@ input{
 }
 
 button{
+    border:none;
     background:linear-gradient(135deg,#9b5cff,#6f2cff);
     color:#fff;
-    border:none;
     font-weight:600;
 }
 
-/* ================= FOOTER FIXED ================= */
+/* ===== KEMBALI ===== */
+.back{
+    display:block;
+    margin-top:14px;
+    font-size:13px;
+    color:#6f2cff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* ===== FOOTER FIXED (TIDAK BERGERAK) ===== */
 footer{
     background:#000;
     color:#fff;
     text-align:center;
-    padding:10px;
-    font-size:11px;
+    padding:12px 0;
+    font-size:12px;
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
     z-index:1000;
 }
-
-/* ================= EXTRA MOBILE SAFETY ================= */
-@media (max-width:360px){
-    .box{
-        max-width:100%;
-        padding:20px 14px;
-    }
-
-    .navbar a{
-        font-size:11px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header>
     <img src="woe.png" class="logo" alt="woe.jastip">
-    <div class="navbar">
-        <a href="index.html#kalkulator">Hitung Berat/Volume</a>
-        <a href="Daftaralamat.html">Alamat Jastip</a>
-        <a href="cekpaket.html">Cek Paket</a>
-    </div>
 </header>
 
-<!-- ===== CONTENT ===== -->
-<div class="content">
+<!-- MAIN -->
+<div class="main">
     <div class="box">
         <h3>Cek Data Paket</h3>
 
         <input type="text" id="kode" placeholder="Masukkan kode (contoh: 12345)">
         <button onclick="cekKode()">Cek Data</button>
+
+        <a href="index.html" class="back">← Kembali ke Beranda</a>
     </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
     © 2025 Dhani Mochtar
 </footer>
