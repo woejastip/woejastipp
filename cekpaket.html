@@ -18,7 +18,7 @@ html, body{
     height:100%;
     font-family:Arial, sans-serif;
     background:#f4f6f8;
-    overflow:hidden; /* TIDAK BISA GESER */
+    overflow:hidden;
 }
 
 /* ===== HEADER ===== */
@@ -40,8 +40,8 @@ header{
 /* ===== MAIN ===== */
 .main{
     position:absolute;
-    top:70px;        /* tinggi header */
-    bottom:60px;     /* tinggi footer */
+    top:70px;
+    bottom:60px;
     left:0;
     right:0;
     display:flex;
@@ -85,6 +85,7 @@ button{
     background:linear-gradient(135deg,#9b5cff,#6f2cff);
     color:#fff;
     font-weight:600;
+    cursor:pointer;
 }
 
 /* ===== KEMBALI ===== */
@@ -97,7 +98,7 @@ button{
     font-weight:600;
 }
 
-/* ===== FOOTER FIXED (TIDAK BERGERAK) ===== */
+/* ===== FOOTER ===== */
 footer{
     background:#000;
     color:#fff;
@@ -115,24 +116,30 @@ footer{
 
 <body>
 
-<!-- HEADER -->
+<!-- ===== HEADER ===== -->
 <header>
     <img src="woe.png" class="logo" alt="woe.jastip">
 </header>
 
-<!-- MAIN -->
+<!-- ===== MAIN ===== -->
 <div class="main">
     <div class="box">
         <h3>Cek Data Paket</h3>
 
-        <input type="text" id="kode" placeholder="Masukkan kode (contoh: 12345)">
+        <input 
+            type="text" 
+            id="kode" 
+            placeholder="Masukkan No Anda yang Terdaftar"
+            inputmode="numeric"
+        >
+
         <button onclick="cekKode()">Cek Data</button>
 
         <a href="index.html" class="back">← Kembali ke Beranda</a>
     </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer>
     © 2025 Dhani Mochtar
 </footer>
@@ -142,20 +149,19 @@ function cekKode(){
     const kode = document.getElementById("kode").value.trim();
 
     if(!kode){
-        alert("Silakan masukkan kode paket");
+        alert("Silakan masukkan nomor Anda");
         return;
     }
 
     const dataLink = {
-        "12345": "https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit#gid=0&range=A2:E2",
-        "67890": "https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit#gid=0&range=A3:E3",
-        "ABC01": "https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit"
+        "123": "https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit#gid=0&range=A2:E2",
+        "456": "https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit#gid=0&range=A3:E3"
     };
 
     if(dataLink[kode]){
         window.open(dataLink[kode], "_blank");
     }else{
-        alert("Kode tidak ditemukan ❌");
+        alert("Data tidak ditemukan ❌");
     }
 }
 </script>
