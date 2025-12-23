@@ -87,63 +87,6 @@ header {
     margin-bottom: 12px;
 }
 
-/* ================= KALKULATOR ================= */
-.calculator {
-    width: 95%;
-    max-width: 360px;
-    margin: 30px auto;
-    padding: 16px;
-    border-radius: 16px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.calculator h2 {
-    font-size: 16px;
-    margin-bottom: 6px;
-}
-
-.calculator p {
-    font-size: 12px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.calculator input,
-.calculator select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-.calculator button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 999px;
-    background: linear-gradient(135deg,#9b5cff,#6f2cff);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.result {
-    margin-top: 10px;
-    font-size: 13px;
-    font-weight: bold;
-    min-height: 80px;
-    line-height: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-}
-
 /* ================= FOOTER FIXED ================= */
 footer {
     background: #000;
@@ -176,7 +119,6 @@ footer {
     text-align: center;
     color: #fff;
     position: relative;
-    animation: fadeUp .4s ease;
 }
 
 .woe-close {
@@ -185,7 +127,6 @@ footer {
     right: 14px;
     font-size: 20px;
     cursor: pointer;
-    opacity: .7;
 }
 
 .woe-title {
@@ -200,7 +141,6 @@ footer {
     margin-bottom: 12px;
 }
 
-/* ===== TRIP INFO CENTER (INI YANG PENTING) ===== */
 .trip-info {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(155,92,255,.3);
@@ -246,11 +186,6 @@ footer {
     font-size: 13px;
     font-weight: 600;
 }
-
-@keyframes fadeUp {
-    from {opacity:0; transform:translateY(16px);}
-    to {opacity:1; transform:translateY(0);}
-}
 </style>
 </head>
 
@@ -259,7 +194,7 @@ footer {
 <header>
     <img src="woe.png" class="logo">
     <div class="navbar">
-        <a href="#kalkulator">Hitung Berat/Volume</a>
+        <a href="kgvolume.html">Hitung Berat/Volume</a>
         <a href="Daftaralamat.html">Alamat Jastip</a>
         <a href="cekpaket.html">Cek Paket</a>
     </div>
@@ -274,35 +209,14 @@ footer {
         <img src="woe2.jpg">
         <img src="woe3.jpg">
     </div>
-
-    <div class="calculator" id="kalkulator">
-        <h2>Hitung Berat / Volume Paket & Ongkir</h2>
-        <p>Rumus: (Panjang × Lebar × Tinggi) / 4000</p>
-
-        <input type="number" id="p" placeholder="Panjang (cm)">
-        <input type="number" id="l" placeholder="Lebar (cm)">
-        <input type="number" id="t" placeholder="Tinggi (cm)">
-        <input type="number" id="beratReal" placeholder="Berat Real (kg)">
-
-        <select id="tujuan">
-            <option value="">Pilih Tujuan</option>
-            <option value="Ternate">Ternate (20k/kg)</option>
-            <option value="Bacan">Bacan (25k/kg)</option>
-            <option value="Laiwui">Laiwui (27k/kg)</option>
-            <option value="Kawasi">Kawasi (33k/kg)</option>
-        </select>
-
-        <button onclick="hitung()">Hitung</button>
-        <div class="result" id="hasil">Berat Volume dan ongkir akan muncul di sini</div>
-    </div>
 </div>
 
 <footer>© 2025 Dhani Mochtar</footer>
 
-<!-- ===== POPUP IKLAN NORMAL ===== -->
+<!-- ===== POPUP ===== -->
 <div class="woe-overlay" id="woePopup">
     <div class="woe-modal">
-        <div class="woe-close" onclick="closePopup()">×</div>
+        <div class="woe-close" onclick="document.getElementById('woePopup').style.display='none'">×</div>
 
         <div class="woe-title">JADWAL TRIP JANUARI</div>
         <div class="woe-route">Jakarta – Maluku Utara</div>
@@ -317,7 +231,7 @@ footer {
                 <div class="value">10 Januari 2025</div>
             </div>
             <div>
-                <div class="label">Estimasi Tiba Di Ternate</div>
+                <div class="label">Estimasi Tiba</div>
                 <div class="value">17 Januari 2025</div>
             </div>
         </div>
@@ -330,38 +244,5 @@ footer {
     </div>
 </div>
 
-<script>
-function closePopup(){
-    document.getElementById("woePopup").style.display = "none";
-}
-
-function hitung(){
-    let p = parseFloat(document.getElementById("p").value);
-    let l = parseFloat(document.getElementById("l").value);
-    let t = parseFloat(document.getElementById("t").value);
-    let beratReal = parseFloat(document.getElementById("beratReal").value);
-    let tujuan = document.getElementById("tujuan").value;
-
-    if(!p || !l || !t || !beratReal || !tujuan){
-        hasil.innerHTML = "Lengkapi semua kolom!";
-        return;
-    }
-
-    let volume = (p*l*t)/4000;
-    let berat = Math.max(volume, beratReal);
-
-    let tarif = {Ternate:20000,Bacan:25000,Laiwui:27000,Kawasi:33000};
-    let total = berat * tarif[tujuan];
-    let diskon = berat >= 10 ? berat * 2000 : 0;
-
-    hasil.innerHTML =
-        `Berat Volume: ${volume.toFixed(2)} Kg<br>
-         Berat Terpakai: ${berat.toFixed(2)} Kg<br>
-         Ongkir Bayar: Rp ${(total-diskon).toLocaleString()}`;
-}
-</script>
-
 </body>
 </html>
-
-
