@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hitung Kg / Volume - woe.jastip</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#fff;
+    color:#000;
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#000;
+    text-align:center;
+    padding:14px 0;
+}
+
+header img{
+    width:120px;
+}
+
+/* ===== CONTENT ===== */
+.content{
+    padding:20px 10px 80px;
+    text-align:center;
+}
+
+h1{
+    font-size:20px;
+    margin-bottom:6px;
+}
+
+h1 span{
+    color:#9b5cff;
+}
+
+p{
+    font-size:12px;
+    color:#555;
+}
+
+/* ===== KALKULATOR ===== */
+.calculator{
+    width:95%;
+    max-width:360px;
+    margin:20px auto;
+    padding:16px;
+    border-radius:16px;
+    background:#f9f9f9;
+    border:1px solid #ddd;
+}
+
+.calculator input,
+.calculator select{
+    width:100%;
+    padding:10px;
+    margin-bottom:8px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+.calculator button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(135deg,#9b5cff,#6f2cff);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:10px;
+    font-size:13px;
+    font-weight:bold;
+    min-height:110px;
+    line-height:20px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+}
+
+/* ===== BACK BUTTON ===== */
+.back{
+    margin-top:14px;
+}
+
+.back a{
+    font-size:12px;
+    color:#6f2cff;
+    text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#000;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+    font-size:11px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="woe.png">
+</header>
+
+<div class="content">
+    <h1>Hitung <span>Berat / Volume</span></h1>
+    <p>Rumus: (P × L × T) / 4000</p>
+
+    <div class="calculator">
+        <input type="number" id="p" placeholder="Panjang (cm)">
+        <input type="number" id="l" placeholder="Lebar (cm)">
+        <input type="number" id="t" placeholder="Tinggi (cm)">
+        <input type="number" id="beratReal" placeholder="Berat Real (kg)">
+
+        <select id="tujuan">
+            <option value="">Pilih Tujuan</option>
+            <option value="Ternate">Ternate (20k/kg)</option>
+            <option value="Bacan">Bacan (25k/kg)</option>
+            <option value="Laiwui">Laiwui (27k/kg)</option>
+            <option value="Kawasi">Kawasi (33k/kg)</option>
+        </select>
+
+        <button onclick="hitung()">Hitung Ongkir</button>
+
+        <div class="result" id="hasil">
+            Hasil perhitungan akan muncul di sini
+        </div>
+
+        <div class="back">
+            <a href="index.html">← Kembali ke Beranda</a>
+        </div>
+    </div>
+</div>
+
+<footer>© 2025 Dhani Mochtar</footer>
+
+<script>
+function hitung(){
+    let p = parseFloat(document.getElementById("p").value);
+    let l = parseFloat(document.getElementById("l").value);
+    let t = parseFloat(document.getElementById("t").value);
+    let beratReal = parseFloat(document.getElementById("beratReal").value);
+    let tujuan = document.getElementById("tujuan").value;
+    let hasil = document.getElementById("hasil");
+
+    if(!p || !l || !t || !beratReal || !tujuan){
+        hasil.innerHTML = "Lengkapi semua kolom!";
+        return;
+    }
+
+    // ===== HITUNG =====
+    let beratVolume = (p * l * t) / 4000;
+    let beratPakai = Math.max(beratVolume, beratReal);
+
+    // ===== TARIF =====
+    let tarif = {
+        Ternate: 20000,
+        Bacan: 25000,
+        Laiwui: 27000,
+        Kawasi: 33000
+    };
+
+    let ongkirAwal = beratPakai * tarif[tujuan];
+
+    // ===== POTONGAN =====
+    let potongan = 0;
+    if(beratPakai >= 10){
+        potongan = beratPakai * 2000; // 2rb / kg
+    }
+
+    let ongkirAkhir = ongkirAwal - potongan;
+
+    // ===== OUTPUT =====
+    hasil.innerHTML = `
+        Berat Real: ${beratReal.toFixed(2)} Kg<br>
+        Berat Volume: ${beratVolume.toFixed(2)} Kg<br>
+        Berat Terpakai: ${beratPakai.toFixed(2)} Kg<br>
+        Ongkir Awal: Rp ${ongkirAwal.toLocaleString()}<br>
+        Potongan: Rp ${potongan.toLocaleString()}<br>
+        <b>Ongkir Bayar: Rp ${ongkirAkhir.toLocaleString()}</b>
+    `;
+}
+</script>
+
+</body>
+</html>
