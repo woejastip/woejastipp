@@ -2,10 +2,20 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Hitung Kg / Volume - woe.jastip</title>
 
 <style>
+/* ===== RESET & LOCK SCROLL ===== */
+*{
+    box-sizing:border-box;
+}
+
+html, body{
+    width:100%;
+    overflow-x:hidden;   /* ❌ tidak bisa geser kiri kanan */
+}
+
 body{
     font-family: Arial, sans-serif;
     margin:0;
@@ -19,21 +29,25 @@ header{
     background:#000;
     text-align:center;
     padding:14px 0;
+    width:100%;
 }
 
 header img{
     width:120px;
+    max-width:90%;
 }
 
 /* ===== CONTENT ===== */
 .content{
-    padding:20px 10px 80px;
+    width:100%;
+    padding:16px 10px 90px;
     text-align:center;
 }
 
+/* ===== TITLE ===== */
 h1{
     font-size:20px;
-    margin-bottom:6px;
+    margin:6px 0;
 }
 
 h1 span{
@@ -43,53 +57,57 @@ h1 span{
 p{
     font-size:12px;
     color:#555;
+    margin-bottom:14px;
 }
 
-/* ===== KALKULATOR ===== */
+/* ===== KALKULATOR BOX ===== */
 .calculator{
-    width:95%;
+    width:100%;
     max-width:360px;
-    margin:20px auto;
+    margin:0 auto;
     padding:16px;
     border-radius:16px;
     background:#f9f9f9;
     border:1px solid #ddd;
 }
 
+/* ===== INPUT ===== */
 .calculator input,
 .calculator select{
     width:100%;
-    padding:10px;
-    margin-bottom:8px;
-    border-radius:10px;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:12px;
     border:1px solid #ccc;
     font-size:14px;
+    outline:none;
 }
 
+/* ===== BUTTON ===== */
 .calculator button{
     width:100%;
-    padding:12px;
+    padding:14px;
     border:none;
     border-radius:999px;
     background:linear-gradient(135deg,#9b5cff,#6f2cff);
     color:#fff;
     font-weight:600;
-    cursor:pointer;
+    font-size:14px;
 }
 
+/* ===== RESULT ===== */
 .result{
-    margin-top:10px;
+    margin-top:12px;
     font-size:13px;
     font-weight:bold;
-    min-height:110px;
     line-height:20px;
     background:#fff;
     border:1px solid #ddd;
-    border-radius:10px;
-    padding:10px;
+    border-radius:12px;
+    padding:12px;
 }
 
-/* ===== BACK BUTTON ===== */
+/* ===== BACK ===== */
 .back{
     margin-top:14px;
 }
@@ -100,7 +118,7 @@ p{
     text-decoration:none;
 }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER (TETAP BAWAH & STABIL) ===== */
 footer{
     background:#000;
     color:#fff;
@@ -109,6 +127,7 @@ footer{
     font-size:11px;
     position:fixed;
     bottom:0;
+    left:0;
     width:100%;
 }
 </style>
@@ -166,11 +185,9 @@ function hitung(){
         return;
     }
 
-    // ===== HITUNG =====
     let beratVolume = (p * l * t) / 4000;
     let beratPakai = Math.max(beratVolume, beratReal);
 
-    // ===== TARIF =====
     let tarif = {
         Ternate: 20000,
         Bacan: 25000,
@@ -180,15 +197,13 @@ function hitung(){
 
     let ongkirAwal = beratPakai * tarif[tujuan];
 
-    // ===== POTONGAN =====
     let potongan = 0;
     if(beratPakai >= 10){
-        potongan = beratPakai * 2000; // 2rb / kg
+        potongan = beratPakai * 2000;
     }
 
     let ongkirAkhir = ongkirAwal - potongan;
 
-    // ===== OUTPUT =====
     hasil.innerHTML = `
         Berat Real: ${beratReal.toFixed(2)} Kg<br>
         Berat Volume: ${beratVolume.toFixed(2)} Kg<br>
