@@ -52,6 +52,12 @@ header {
     text-decoration: underline;
 }
 
+/* Style khusus tombol admin agar terlihat sedikit berbeda */
+.nav-admin {
+    color: #9b5cff !important;
+    font-weight: bold;
+}
+
 /* ================= CONTENT ================= */
 .content {
     text-align: center;
@@ -197,6 +203,8 @@ footer {
         <a href="kgvolume.html">Hitung Berat/Volume</a>
         <a href="Daftaralamat.html">Alamat Jastip</a>
         <a href="https://docs.google.com/spreadsheets/d/1cCVanB4qUDq5Z-tmNV3FUHqxOZ7ufeDDj3_JG8kD0v4/edit?usp=sharing">Cek Paket</a>
+        <!-- Tambahan Link Admin -->
+        <a href="#" class="nav-admin" onclick="masukAdmin()">Admin</a>
     </div>
 </header>
 
@@ -243,6 +251,19 @@ footer {
         <a href="https://wa.me/6282258401126" class="woe-btn">Chat Admin</a>
     </div>
 </div>
+
+<script>
+    function masukAdmin() {
+        var password = prompt("Masukkan Password Admin:", "");
+        
+        if (password === "admin12345") {
+            // Ganti 'halaman_admin.html' dengan nama file halaman admin Anda nanti
+            window.location.href = "halaman_admin.html";
+        } else if (password !== null) {
+            alert("Password Salah!");
+        }
+    }
+</script>
 
 </body>
 </html>
